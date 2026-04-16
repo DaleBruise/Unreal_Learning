@@ -27,7 +27,7 @@ void ALinglongCharacter::BeginPlay()
 	
 }
 
-void ALinglongCharacter::_MoveForward(float value) {
+void ALinglongCharacter::MoveForward(float value) {
 	AddMovementInput(GetActorForwardVector(), value);
 }
 
@@ -43,7 +43,7 @@ void ALinglongCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-	PlayerInputComponent->BindAxis("MoveForward", this, &ALinglongCharacter::_MoveForward);
+	PlayerInputComponent->BindAxis("MoveForward", this, &ALinglongCharacter::MoveForward);
 
 	PlayerInputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
 }
