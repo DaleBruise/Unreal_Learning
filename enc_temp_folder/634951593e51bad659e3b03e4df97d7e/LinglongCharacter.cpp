@@ -60,7 +60,7 @@ void ALinglongCharacter::MoveRight(float value) {
 }
 
 void ALinglongCharacter::Jump() {
-	ACharacter::Jump();
+	
 }
 
 void ALinglongCharacter::PrimaryAttack() {
