@@ -8,6 +8,8 @@
 
 class USpringArmComponent;
 class UCameraComponent;
+class USInteractionComponent;
+class UAnimMontage;
 
 UCLASS()
 class UNREAL_LEARNING_API ALinglongCharacter : public ACharacter
@@ -26,8 +28,16 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	UCameraComponent* _camera_comp;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(VisibleAnywhere)
+	USInteractionComponent* _interaction_comp;
+
+	UPROPERTY(EditAnywhere, Category = "Attack")
+	UAnimMontage* _attack_anim;
+
+	UPROPERTY(EditAnywhere, Category = "Attack")
 	TSubclassOf<AActor> ProjectileClass;
+
+	FTimerHandle TimerHandle_PrimaryAttack;
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -36,6 +46,8 @@ protected:
 	void MoveRight(float value);
 	void Jump();
 	void PrimaryAttack();
+	void PrimaryInteract();
+	void PrimaryAttack_TimerElapsed();
 
 public:	
 	// Called every frame

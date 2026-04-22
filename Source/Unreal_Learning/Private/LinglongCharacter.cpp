@@ -6,6 +6,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "SInteractionComponent.h"
 
 // Sets default values
 ALinglongCharacter::ALinglongCharacter()
@@ -20,8 +21,9 @@ ALinglongCharacter::ALinglongCharacter()
 	this->_camera_comp = CreateDefaultSubobject<UCameraComponent>("camera_comp");
 	this->_camera_comp->SetupAttachment(this->_spring_arm_comp);
 
-	GetCharacterMovement()->bOrientRotationToMovement = true;
+	this->_interaction_comp = CreateDefaultSubobject<USInteractionComponent>("InteractionComp");
 
+	GetCharacterMovement()->bOrientRotationToMovement = true;
 	this->bUseControllerRotationYaw = false;
 }
 
@@ -30,48 +32,6 @@ void ALinglongCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	
-}
-
-void ALinglongCharacter::MoveForward(float value) {
-	auto ControlRot = GetControlRotation();
-	ControlRot.Pitch = 0.f;
-	ControlRot.Roll = 0.f;
-
-	/*
-	* Pitch（俯仰角）：rotate around the Y axis
-	* Yaw（偏航角）：rotate around the Z axis
-	* Roll（翻滚角）：rotate around the X axis
-	*/
-
-	AddMovementInput(ControlRot.Vector(), value);
-}
-
-void ALinglongCharacter::MoveRight(float value) {
-	auto ControlRot = GetControlRotation();
-	ControlRot.Pitch = 0.f;
-	ControlRot.Roll = 0.f;
-
-	/* X = Forward(Red)
-	* Y = Right(Green)
-	* Z = Up(Blue)
-	*/
-	auto RightVector = FRotationMatrix(ControlRot).GetScaledAxis(EAxis::Y);
-	AddMovementInput(RightVector, value);
-}
-
-void ALinglongCharacter::Jump() {
-	ACharacter::Jump();
-}
-
-void ALinglongCharacter::PrimaryAttack() {
-	FVector HandLocation = GetMesh()->GetSocketLocation("Muzzle_01");
-
-	auto SpawnTM = FTransform(GetActorRotation(), HandLocation);
-
-	FActorSpawnParameters SpawnParams;
-	SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-
-	GetWorld()->SpawnActor<AActor>(this->ProjectileClass, SpawnTM, SpawnParams);
 }
 
 // Called every frame
@@ -122,5 +82,63 @@ void ALinglongCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
 
 	PlayerInputComponent->BindAction("PrimaryAttack", IE_Pressed, this, &ALinglongCharacter::PrimaryAttack);
+	PlayerInputComponent->BindAction("PrimaryInteract", IE_Pressed, this, &ALinglongCharacter::PrimaryInteract);
 
+}
+
+void ALinglongCharacter::MoveForward(float value) {
+	auto ControlRot = GetControlRotation();
+	ControlRot.Pitch = 0.f;
+	ControlRot.Roll = 0.f;
+
+	/*
+	* Pitch（俯仰角）：rotate around the Y axis
+	* Yaw（偏航角）：rotate around the Z axis
+	* Roll（翻滚角）：rotate around the X axis
+	*/
+
+	AddMovementInput(ControlRot.Vector(), value);
+}
+
+void ALinglongCharacter::MoveRight(float value) {
+	auto ControlRot = GetControlRotation();
+	ControlRot.Pitch = 0.f;
+	ControlRot.Roll = 0.f;
+
+	/* X = Forward(Red)
+	* Y = Right(Green)
+	* Z = Up(Blue)
+	*/
+	auto RightVector = FRotationMatrix(ControlRot).GetScaledAxis(EAxis::Y);
+	AddMovementInput(RightVector, value);
+}
+
+void ALinglongCharacter::Jump() {
+	ACharacter::Jump();
+}
+
+void ALinglongCharacter::PrimaryAttack() {
+	PlayAnimMontage(this->_attack_anim);
+
+	GetWorldTimerManager().SetTimer(
+		TimerHandle_PrimaryAttack, this, 
+		&ALinglongCharacter::PrimaryAttack_TimerElapsed, 
+		0.2f);
+}
+
+void ALinglongCharacter::PrimaryInteract()
+{
+	if (this->_interaction_comp != nullptr)
+		this->_interaction_comp->PrimaryInteract();
+}
+
+void ALinglongCharacter::PrimaryAttack_TimerElapsed()
+{
+	FVector HandLocation = GetMesh()->GetSocketLocation("Muzzle_01");
+	auto SpawnTM = FTransform(GetActorRotation(), HandLocation);
+
+	FActorSpawnParameters SpawnParams;
+	SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+
+	GetWorld()->SpawnActor<AActor>(this->ProjectileClass, SpawnTM, SpawnParams);
 }
