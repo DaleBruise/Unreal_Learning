@@ -3,6 +3,7 @@
 
 #include "ExplosiveBarrel.h"
 #include "Components/StaticMeshComponent.h"
+#include "PhysicsEngine/RadialForceComponent.h"
 
 // Sets default values
 AExplosiveBarrel::AExplosiveBarrel()
@@ -12,8 +13,15 @@ AExplosiveBarrel::AExplosiveBarrel()
 
 	this->_mesh_comp = CreateDefaultSubobject<UStaticMeshComponent>("MeshComp");
 	this->_mesh_comp->SetSimulatePhysics(true);
-
 	SetRootComponent(this->_mesh_comp);
+
+	this->_force_comp = CreateDefaultSubobject<URadialForceComponent>("ForceComp");
+	this->_force_comp->SetupAttachment(this->_mesh_comp);
+	this->_force_comp->SetAutoActivate(false);
+	this->_force_comp->Radius = 750.f;
+	this->_force_comp->ImpulseStrength = 2500.f;
+	this->_force_comp->bImpulseVelChange = true;
+	this->_force_comp->AddCollisionChannelToAffect(ECC_WorldDynamic);
 }
 
 // Called when the game starts or when spawned
@@ -29,3 +37,15 @@ void AExplosiveBarrel::Tick(float DeltaTime)
 
 }
 
+void AExplosiveBarrel::PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
+	this->_mesh_comp->OnComponentHit.AddDynamic(this, &AExplosiveBarrel::OnActorHit);
+}
+
+void AExplosiveBarrel::OnActorHit(UPrimitiveComponent* HitComponent, 
+	AActor* OtherActor, UPrimitiveComponent* OtherComp, 
+	FVector NormalImpulse, const FHitResult& Hit)
+{
+	this->_force_comp->FireImpulse();
+}
