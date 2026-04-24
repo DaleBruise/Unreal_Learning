@@ -2,8 +2,12 @@
 
 
 #include "AMagicProjectile.h"
+
+#include "SAttributeComponent.h"
 #include "Components/SphereComponent.h"
+
 #include "GameFramework/ProjectileMovementComponent.h"
+
 #include "Particles/ParticleSystemComponent.h"
 
 // Sets default values
@@ -13,9 +17,7 @@ AAMagicProjectile::AAMagicProjectile()
 	PrimaryActorTick.bCanEverTick = true;
 
 	this->_sphere_comp = CreateDefaultSubobject<USphereComponent>("SphereComp");
-	//this->_sphere_comp->SetCollisionObjectType(ECC_WorldDynamic);
-	//this->_sphere_comp->SetCollisionResponseToAllChannels(ECR_Ignore);
-	//this->_sphere_comp->SetCollisionResponseToChannel(ECC_Pawn, ECR_Overlap);
+	this->_sphere_comp->OnComponentBeginOverlap.AddDynamic(this, &AAMagicProjectile::OnActorOverlap);
 
 	/* Set up a profile in UE GUI*/
 	this->_sphere_comp->SetCollisionProfileName("Projectile"); 
@@ -42,6 +44,23 @@ void AAMagicProjectile::BeginPlay()
 void AAMagicProjectile::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
+void AAMagicProjectile::OnActorOverlap(UPrimitiveComponent* OverlappedComponent, 
+	AActor* OtherActor, 
+	UPrimitiveComponent* OtherComp,
+	int32 OtherBodyIndex, 
+	bool bFromSweep, 
+	const FHitResult& SweepResult)
+{
+	if (OtherActor != nullptr)
+	{
+		USAttributeComponent* AttributeComp = Cast<USAttributeComponent>(
+			OtherActor->GetComponentByClass(USAttributeComponent::StaticClass()));
+		if (AttributeComp != nullptr)
+		{
+			AttributeComp->ApplyHealthChange(-20.f);
+			this->Destroy();
+		}
+	}
+}

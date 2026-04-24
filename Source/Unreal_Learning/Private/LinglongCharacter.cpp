@@ -4,9 +4,12 @@
 #include "DrawDebugHelpers.h"
 
 #include "GameFramework/SpringArmComponent.h"
-#include "Camera/CameraComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+
+#include "Camera/CameraComponent.h"
+
 #include "SInteractionComponent.h"
+#include "SattributeComponent.h"
 
 // Sets default values
 ALinglongCharacter::ALinglongCharacter()
@@ -23,6 +26,8 @@ ALinglongCharacter::ALinglongCharacter()
 
 	this->_interaction_comp = CreateDefaultSubobject<USInteractionComponent>("InteractionComp");
 
+	this->_attr_comp = CreateDefaultSubobject<USAttributeComponent>("AttributeComp");
+	
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	this->bUseControllerRotationYaw = false;
 }
@@ -39,6 +44,7 @@ void ALinglongCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+#ifdef _debug 
 	/*Rotation Visualization*/
 	const float DrawScale = 100.0f;
 	const float Thickness = 5.0f;
@@ -67,6 +73,8 @@ void ALinglongCharacter::Tick(float DeltaTime)
 		.0f,
 		0,
 		Thickness);
+	
+#endif
 }
 
 // Called to bind functionality to input
@@ -134,12 +142,15 @@ void ALinglongCharacter::PrimaryInteract()
 
 void ALinglongCharacter::PrimaryAttack_TimerElapsed()
 {
-	FVector HandLocation = GetMesh()->GetSocketLocation("Muzzle_01");
-	auto SpawnTM = FTransform(GetActorRotation(), HandLocation);
+	if (ensure(ProjectileClass != nullptr))
+	{
+		FVector HandLocation = GetMesh()->GetSocketLocation("Muzzle_01");
+		auto SpawnTM = FTransform(GetActorRotation(), HandLocation);
 
-	FActorSpawnParameters SpawnParams;
-	SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-	SpawnParams.Instigator = this;
+		FActorSpawnParameters SpawnParams;
+		SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+		SpawnParams.Instigator = this;
 
-	GetWorld()->SpawnActor<AActor>(this->ProjectileClass, SpawnTM, SpawnParams);
+		GetWorld()->SpawnActor<AActor>(this->ProjectileClass, SpawnTM, SpawnParams);
+	}
 }

@@ -10,6 +10,7 @@ class USpringArmComponent;
 class UCameraComponent;
 class USInteractionComponent;
 class UAnimMontage;
+class USAttributeComponent;
 
 UCLASS()
 class UNREAL_LEARNING_API ALinglongCharacter : public ACharacter
@@ -37,6 +38,9 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Attack")
 	TSubclassOf<AActor> ProjectileClass;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	USAttributeComponent* _attr_comp;
+	
 	FTimerHandle TimerHandle_PrimaryAttack;
 
 	// Called when the game starts or when spawned
