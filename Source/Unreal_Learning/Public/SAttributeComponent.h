@@ -6,6 +6,10 @@
 #include "Components/ActorComponent.h"
 #include "SAttributeComponent.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_FourParams(FOnHealthChanged, AActor*, InstigatorActor, 
+	USAttributeComponent*, OwningComp, 
+	float, NewHealth, 
+	float, Delta);
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class UNREAL_LEARNING_API USAttributeComponent : public UActorComponent
@@ -25,11 +29,15 @@ protected:
 	 * BlueprintReadWrite - read-write access in Blueprints.
 	 * Category = "" - display only for detail panels and blueprint context menu.
 	 */
-
+	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Attributes")
 	float _health;
 
 public:
 	UFUNCTION(BlueprintCallable, Category = "Attributes")
 	bool ApplyHealthChange(float Delta);
+	
+	UPROPERTY(BlueprintAssignable)
+	FOnHealthChanged OnHealthChanged;
+	
 };
