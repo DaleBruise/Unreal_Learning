@@ -4,8 +4,12 @@
 #include "ExplosiveBarrel.h"
 
 #include "DrawDebugHelpers.h"
+
 #include "Components/StaticMeshComponent.h"
+
 #include "PhysicsEngine/RadialForceComponent.h"
+
+#include "SAttributeComponent.h"
 
 // Sets default values
 AExplosiveBarrel::AExplosiveBarrel()
@@ -68,4 +72,15 @@ void AExplosiveBarrel::OnActorHit(UPrimitiveComponent* HitComponent,
 		FColor::Green, 
 		2.0f, 
 		true);
+	
+	if (OtherActor != nullptr)
+	{
+		USAttributeComponent* AttributeComp = Cast<USAttributeComponent>(
+			OtherActor->GetComponentByClass(USAttributeComponent::StaticClass()));
+		if (AttributeComp != nullptr)
+		{
+			AttributeComp->ApplyHealthChange(-50.f);
+			this->Destroy();
+		}
+	}
 }
