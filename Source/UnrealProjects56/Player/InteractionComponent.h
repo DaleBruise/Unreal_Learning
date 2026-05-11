@@ -19,6 +19,12 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = Interaction)
 	float InteractionRadius = 800.0f;
 
+	UPROPERTY(EditDefaultsOnly, Category = Interaction)
+	float NormalDistanceScale = 0.6f;
+	
+	UPROPERTY(EditDefaultsOnly, Category = Interaction)
+	float NormalDotScale = 0.4f;
+	
 	UPROPERTY()
 	TObjectPtr<AActor> SelectedActor;
 
