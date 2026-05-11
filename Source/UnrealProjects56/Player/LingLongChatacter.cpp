@@ -3,6 +3,7 @@
 #include "LingLongChatacter.h"
 #include "EnhancedInputComponent.h"
 #include "NiagaraFunctionLibrary.h"
+#include "LingLongTypes.h"
 
 #include "ActionSystem/ActionSystemLingLong.h"
 
@@ -14,6 +15,7 @@
 
 #include "Camera/CameraComponent.h"
 #include "GameFramework/PawnMovementComponent.h"
+
 
 ALingLongCharacter::ALingLongCharacter()
 {
@@ -75,7 +77,7 @@ void ALingLongCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 void ALingLongCharacter::PostInitializeComponents()
 {
 	Super::PostInitializeComponents();
-	
+
 	this->ActionSystemComp->OnHealthChanged.AddDynamic(this, &ALingLongCharacter::OnHealthChanged);
 }
 
@@ -141,10 +143,35 @@ void ALingLongCharacter::AttackTimerElapsed(TSubclassOf<AProjectileBase> Project
 {
 	/* Setting the projectile location */
 	FVector SpawnLocation = this->GetMesh()->GetSocketLocation(this->MuzzleSocketName);
-	FRotator SpawnRotation = this->GetControlRotation();
 	FActorSpawnParameters SpawnParams;
 	SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 	SpawnParams.Instigator = this;
+
+	/* Optimize the projectile's direction */
+	FVector EyeLocation = this->CameraComp->GetComponentLocation();
+	FRotator EyeRotation = this->GetControlRotation();
+	FVector TraceEnd = EyeLocation + (EyeRotation.Vector() * 5000.0f);
+
+	FHitResult Hit;
+
+	FCollisionQueryParams CollisionParams;
+	CollisionParams.AddIgnoredActor(this);
+
+	FVector AdjustedTargetLocation;
+	if (this->GetWorld()->LineTraceSingleByChannel(Hit,
+	                                               EyeLocation,
+	                                               TraceEnd,
+	                                               ECC_GameTraceChannel2,
+	                                               CollisionParams))
+	{
+		AdjustedTargetLocation = Hit.Location;
+	}
+	else
+	{
+		AdjustedTargetLocation = TraceEnd;
+	}
+
+	FRotator SpawnRotation = (AdjustedTargetLocation - SpawnLocation).Rotation();
 
 	AActor* NewProjectile = this->GetWorld()->SpawnActor<AActor>(
 		ProjectileClass,
@@ -153,17 +180,50 @@ void ALingLongCharacter::AttackTimerElapsed(TSubclassOf<AProjectileBase> Project
 		SpawnParams);
 
 	this->MoveIgnoreActorAdd(NewProjectile);
+
+	/* Debug stuff */
+	if (CVarInteractionDebugDrawing.GetValueOnGameThread())
+	{
+		float DebugDrawDuration = 5.0f;
+		DrawDebugBox(this->GetWorld(),
+		             AdjustedTargetLocation,
+		             FVector(20.0f),
+		             FColor::Green,
+		             false,
+		             DebugDrawDuration);
+
+		DrawDebugLine(this->GetWorld(),
+		              EyeLocation,
+		              TraceEnd,
+		              FColor::Green,
+		              false,
+		              DebugDrawDuration);
+
+		DrawDebugLine(this->GetWorld(),
+		              SpawnLocation,
+		              AdjustedTargetLocation,
+		              FColor::Yellow,
+		              false,
+		              DebugDrawDuration);
+
+		DrawDebugLine(this->GetWorld(),
+		              SpawnLocation,
+		              SpawnLocation + (this->GetControlRotation().Vector() * 5000.0f),
+		              FColor::Purple,
+		              false,
+		              DebugDrawDuration);
+	}
 }
 
 void ALingLongCharacter::OnHealthChanged(float NewHealth, float OldHealth)
-{	
+{
 	/* Died ? */
 	if (FMath::IsNearlyZero(NewHealth))
 	{
 		this->DisableInput(nullptr);
-		
+
 		this->GetMovementComponent()->StopMovementImmediately();
-		
+
 		this->PlayAnimMontage(this->PlayerDeathMontage);
 	}
 }
@@ -173,10 +233,10 @@ float ALingLongCharacter::TakeDamage(float DamageAmount,
                                      class AController* EventInstigator,
                                      AActor* DamageCauser)
 {
-	float ActualDamage =  Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser) * (-1.0f);
-	
+	float ActualDamage = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser) * (-1.0f);
+
 	this->ActionSystemComp->ApplyHealthChange(ActualDamage);
-	
+
 	return ActualDamage;
 }
 

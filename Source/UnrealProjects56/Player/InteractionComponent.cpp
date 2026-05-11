@@ -7,11 +7,10 @@
 
 #include "Core/InteractionInterface.h"
 
-
-TAutoConsoleVariable<bool> CVarInteractionDebugDrawing(TEXT("game.interaction.DebugDrawing"),
-	false,
-	TEXT("Enable interaction debug drawing"),
-	ECVF_Cheat);
+// TAutoConsoleVariable<bool> CVarInteractionDebugDrawing(TEXT("game.interaction.DebugDrawing"),
+// 	false,
+// 	TEXT("Enable interaction debug drawing"),
+// 	ECVF_Cheat);
 
 // Sets default values for this component's properties
 UInteractionComponent::UInteractionComponent()
