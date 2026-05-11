@@ -7,6 +7,12 @@
 
 #include "Core/InteractionInterface.h"
 
+
+TAutoConsoleVariable<bool> CVarInteractionDebugDrawing(TEXT("game.interaction.DebugDrawing"),
+	false,
+	TEXT("Enable interaction debug drawing"),
+	ECVF_Cheat);
+
 // Sets default values for this component's properties
 UInteractionComponent::UInteractionComponent()
 {
@@ -32,13 +38,8 @@ void UInteractionComponent::TickComponent(float DeltaTime,
                                           FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-
-	// if (IfShowDebug && this->SelectedActor != nullptr)
-	// {
-	// 	UE_LOG(LogTemp, 
-	// 		Log, 
-	// 		TEXT("The Selected Actor is: %s"), *this->SelectedActor->GetName());
-	// }
+	
+	bool bEnableDebugDraw = CVarInteractionDebugDrawing.GetValueOnGameThread();
 	
 	APlayerController* PC = CastChecked<APlayerController>(GetOwner());
 	if (PC != nullptr)
@@ -73,7 +74,7 @@ void UInteractionComponent::TickComponent(float DeltaTime,
 				HighestDotResult = DotResult;
 			}
 
-			if (IfShowDebug)
+			if (bEnableDebugDraw)
 			{
 				DrawDebugBox(this->GetWorld(),
 				             OverlapLocation,
@@ -93,16 +94,16 @@ void UInteractionComponent::TickComponent(float DeltaTime,
 
 		this->SelectedActor = BestActor;
 
-		if (BestActor != nullptr && IfShowDebug)
-		{
-			DrawDebugBox(this->GetWorld(),
-			             BestActor->GetActorLocation(),
-			             FVector(60.0f),
-			             FColor::Blue);
-		}
 
-		if (IfShowDebug)
+		if (bEnableDebugDraw)
 		{
+			if (BestActor != nullptr)
+			{
+				DrawDebugBox(this->GetWorld(),
+				             BestActor->GetActorLocation(),
+				             FVector(60.0f),
+				             FColor::Blue);
+			}
 			DrawDebugSphere(this->GetWorld(),
 			                Center,
 			                this->InteractionRadius,

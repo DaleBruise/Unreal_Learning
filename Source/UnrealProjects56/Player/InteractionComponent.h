@@ -22,9 +22,6 @@ protected:
 	UPROPERTY()
 	TObjectPtr<AActor> SelectedActor;
 
-	UPROPERTY(EditDefaultsOnly, Category = Interaction)
-	bool IfShowDebug = true;
-
 public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime,
