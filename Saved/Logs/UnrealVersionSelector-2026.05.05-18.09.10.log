@@ -1,0 +1,479 @@
+Log started at 05/05/2026 18:09:10 (2026-05-05T10:09:10Z)
+Resolved project argument E:/DaleBruise_Repo/UnrealProjects56/UnrealProjects56/UnrealProjects56.uproject to E:\DaleBruise_Repo\UnrealProjects56\UnrealProjects56\UnrealProjects56.uproject
+No config file at C:\ProgramData\Unreal Engine\UnrealBuildTool\BuildConfiguration.xml
+No config file at C:\Users\DaleB\AppData\Local\Unreal Engine\UnrealBuildTool\BuildConfiguration.xml
+No config file at C:\Users\DaleB\Documents\Unreal Engine\UnrealBuildTool\BuildConfiguration.xml
+Configuration will be read from:
+  C:\Users\DaleB\AppData\Roaming\Unreal Engine\UnrealBuildTool\BuildConfiguration.xml
+Reading configuration file from cache (E:\DaleBruise_Repo\UnrealProjects56\UnrealProjects56\Intermediate\Build\XmlConfigCache.bin): C:\Users\DaleB\AppData\Roaming\Unreal Engine\UnrealBuildTool\BuildConfiguration.xml
+Reading configuration file from cache (E:\DaleBruise_Repo\UnrealProjects56\UnrealProjects56\Intermediate\Build\XmlConfigCache.bin): E:\DaleBruise_Repo\UnrealProjects56\UnrealProjects56\Saved\UnrealBuildTool\BuildConfiguration.xml
+Reading configuration file from cache (E:\DaleBruise_Repo\UnrealProjects56\UnrealProjects56\Intermediate\Build\XmlConfigCache.bin): C:\Users\DaleB\AppData\Local\UnrealEngine\Intermediate\Build\UnrealBuildTool.Env.BuildConfiguration.xml
+Log file: E:\DaleBruise_Repo\UnrealProjects56\UnrealProjects56\Saved\Logs\UnrealVersionSelector-2026.05.05-18.09.10.log
+
+Setting temp directory to 'C:\Users\DaleB\AppData\Local\Temp\UnrealBuildTool\09eec032'
+    Registering build platform: UnrealBuildTool.AndroidPlatformFactory
+    Registering build platform: UnrealBuildTool.IOSPlatformFactory
+    Registering build platform: UnrealBuildTool.LinuxPlatformFactory
+    Registering build platform: UnrealBuildTool.MacPlatformFactory
+    Registering build platform: UnrealBuildTool.TVOSPlatformFactory
+    Registering build platform: UnrealBuildTool.WindowsPlatformFactory
+Found Windows 10 SDK root at C:\Program Files\Windows Kits\10 (1)
+Found Windows 10 SDK root at C:\Program Files (x86)\Windows Kits\10 (2)
+Found Windows 10 SDK version 10.0.19041.0 at C:\Program Files (x86)\Windows Kits\10
+Found Universal CRT version 10.0.19041.0 at C:\Program Files (x86)\Windows Kits\10
+Found Windows 10 SDK version 10.0.26100.0 at C:\Program Files (x86)\Windows Kits\10
+Found Universal CRT version 10.0.26100.0 at C:\Program Files (x86)\Windows Kits\10
+Win64 Installed SDK(s): MinVersion_Sdk=10.0.19041.0, MaxVersion_Sdk=10.9.99999.0, CurrentVersion_Sdk=10.0.26100.0, Version_AutoSdk=10.0.22621.0, CurrentVersion_AutoSdk=
+        Registering build platform: Win64 - buildable: True
+    Registering build platform: UnrealBuildTool.VisionOSPlatformFactory
+Resolved project argument E:/DaleBruise_Repo/UnrealProjects56/UnrealProjects56/UnrealProjects56.uproject to E:\DaleBruise_Repo\UnrealProjects56\UnrealProjects56\UnrealProjects56.uproject
+Reading configuration file from cache (E:\DaleBruise_Repo\UnrealProjects56\UnrealProjects56\Intermediate\Build\XmlConfigCache.bin): C:\Users\DaleB\AppData\Roaming\Unreal Engine\UnrealBuildTool\BuildConfiguration.xml
+Reading configuration file from cache (E:\DaleBruise_Repo\UnrealProjects56\UnrealProjects56\Intermediate\Build\XmlConfigCache.bin): E:\DaleBruise_Repo\UnrealProjects56\UnrealProjects56\Saved\UnrealBuildTool\BuildConfiguration.xml
+Reading configuration file from cache (E:\DaleBruise_Repo\UnrealProjects56\UnrealProjects56\Intermediate\Build\XmlConfigCache.bin): C:\Users\DaleB\AppData\Local\UnrealEngine\Intermediate\Build\UnrealBuildTool.Env.BuildConfiguration.xml
+Registering project generator UnrealBuildTool.AndroidProjectGenerator for Android
+Skipping project file generator registration for Android due to no valid BuildPlatform.
+Registering project generator UnrealBuildTool.IOSProjectGenerator for IOS
+Skipping project file generator registration for IOS due to no valid BuildPlatform.
+Registering project generator UnrealBuildTool.LinuxProjectGenerator for Linux
+Skipping project file generator registration for Linux due to no valid BuildPlatform.
+Registering project generator UnrealBuildTool.LinuxProjectGenerator for LinuxArm64
+Skipping project file generator registration for LinuxArm64 due to no valid BuildPlatform.
+Registering project generator UnrealBuildTool.MacProjectGenerator for Mac
+Skipping project file generator registration for Mac due to no valid BuildPlatform.
+Registering project generator UnrealBuildTool.TVOSProjectGenerator for TVOS
+Skipping project file generator registration for TVOS due to no valid BuildPlatform.
+Registering project generator UnrealBuildTool.WindowsProjectGenerator for Win64
+Registering project generator UnrealBuildTool.VisionOSProjectGenerator for VisionOS
+Skipping project file generator registration for VisionOS due to no valid BuildPlatform.
+
+---   SDK INFO START   ---
+---   SDK INFO END   ---
+
+
+Generating VisualStudio project files:
+Discovering modules, targets and source code for project...
+Found VisualStudioUnsupported installation: E:\Microsoft Visual Studio\2019\Community (Product=Microsoft.VisualStudio.Product.Community, Version=16.11.37027.11)
+Found VisualStudio2022 installation: E:\Microsoft Visual Studio\18\Community (Product=Microsoft.VisualStudio.Product.Community, Version=18.5.11709.299)
+Found Visual Studio toolchain: E:\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133 (Family=14.29.30133, FamilyRank=1, Version=14.29.30159, HostArchitecture=x64, ReleaseChannel=Latest, Architecture=x64, Error=True, Redist=E:\Microsoft Visual Studio\2019\Community\VC\Redist\MSVC\14.29.30133)
+Found Visual Studio toolchain: E:\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207 (Family=14.44.35207, FamilyRank=1, Version=14.44.35225, HostArchitecture=x64, ReleaseChannel=Latest, Architecture=x64, Error=False, Redist=E:\Microsoft Visual Studio\18\Community\VC\Redist\MSVC\14.50.35710)
+Found Visual Studio toolchain: E:\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717 (Family=14.50.35717, FamilyRank=1, Version=14.50.35729, HostArchitecture=x64, ReleaseChannel=Latest, Architecture=x64, Error=False, Redist=E:\Microsoft Visual Studio\18\Community\VC\Redist\MSVC\14.50.35710)
+Detected supported platforms: Win64
+Adding projects for all targets...
+Skipping F:\Unreal Projects\UE_5.6\Engine\Intermediate\Build\BuildRules\UE5Rules.dll: File is installed
+Skipping F:\Unreal Projects\UE_5.6\Engine\Intermediate\Build\BuildRules\UE5ProgramRules.dll: File is installed
+Available x64 toolchains (2):
+ * E:\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717
+    (Family=14.50.35717, FamilyRank=1, Version=14.50.35729, HostArchitecture=x64, ReleaseChannel=Latest, Architecture=x64)
+ * E:\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207
+    (Family=14.44.35207, FamilyRank=1, Version=14.44.35225, HostArchitecture=x64, ReleaseChannel=Latest, Architecture=x64)
+Visual Studio 2022 compiler version 14.50.35729 is not a preferred version. Please use the latest preferred version 14.38.33130
+Generating target Game for E:\DaleBruise_Repo\UnrealProjects56\UnrealProjects56\Intermediate\ProjectFiles\UnrealProjects56.vcxproj
+Generating target Editor for E:\DaleBruise_Repo\UnrealProjects56\UnrealProjects56\Intermediate\ProjectFiles\UnrealProjects56.vcxproj
+Generating target Editor for E:\DaleBruise_Repo\UnrealProjects56\UnrealProjects56\Intermediate\ProjectFiles\UE5.vcxproj
+Generating target Game for E:\DaleBruise_Repo\UnrealProjects56\UnrealProjects56\Intermediate\ProjectFiles\UE5.vcxproj
+Adding projects for all targets took 1.04s
+Adding projects for all game projects took 0.00s
+Adding shader source code...
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\AITestSuite\AITestSuite.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Android\AndroidDeviceDetection\AndroidDeviceDetection.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Android\AndroidPlatformEditor\AndroidPlatformEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Android\AndroidTargetPlatformControls\AndroidTargetPlatformControls.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Android\AndroidTargetPlatformSettings\AndroidTargetPlatformSettings.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Android\AndroidTargetPlatform\AndroidTargetPlatform.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\AnimationDataController\AnimationDataController.build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\AnimationWidgets\AnimationWidgets.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Apple\MetalShaderFormat\MetalShaderFormat.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\AssetTools\AssetTools.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\AudioFormatADPCM\AudioFormatADPCM.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\AudioFormatBink\AudioFormatBink.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\AudioFormatOgg\AudioFormatOgg.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\AudioFormatOpus\AudioFormatOpus.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\AudioFormatRad\AudioFormatRad.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\AudioSettingsEditor\AudioSettingsEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\AutomationController\AutomationController.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\AutomationDriver\AutomationDriver.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\AutomationWindow\AutomationWindow.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\BSPUtils\BSPUtils.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\BlankModule\BlankModule.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\CQTest\CQTest.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\CSVUtils\CSVUtils.build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\CollectionManager\CollectionManager.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\CollisionAnalyzer\CollisionAnalyzer.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\CookMetadata\CookMetadata.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\CookOnTheFlyNetServer\CookOnTheFlyNetServer.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\CookedEditor\CookedEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\CrashDebugHelper\CrashDebugHelper.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Datasmith\DatasmithExporterUI\DatasmithExporterUI.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Datasmith\DatasmithExporter\DatasmithExporter.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Datasmith\DatasmithFacade\DatasmithFacade.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\DerivedDataCache\DerivedDataCache.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\DesktopPlatform\DesktopPlatform.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\DesktopWidgets\DesktopWidgets.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\DevHttp\DevHttp.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\DeveloperToolSettings\DeveloperToolSettings.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\DeviceManager\DeviceManager.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\DirectoryWatcher\DirectoryWatcher.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\DistributedBuildInterface\DistributedBuildInterface.build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\DrawPrimitiveDebugger\DrawPrimitiveDebugger.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\EditorAnalyticsSession\EditorAnalyticsSession.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\ExternalImagePicker\ExternalImagePicker.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\FileUtilities\FileUtilities.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\FunctionalTesting\FunctionalTesting.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\GeometryProcessingInterfaces\GeometryProcessingInterfaces.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\GraphColor\GraphColor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\HierarchicalLODUtilities\HierarchicalLODUtilities.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Horde\Horde.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\HotReload\HotReload.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\IOS\IOSPlatformEditor\IOSPlatformEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\IOS\IOSTargetPlatformControls\IOSTargetPlatformControls.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\IOS\IOSTargetPlatformSettings\IOSTargetPlatformSettings.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\IOS\IOSTargetPlatform\IOSTargetPlatform.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\IOS\TVOSTargetPlatformControls\TVOSTargetPlatformControls.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\IOS\TVOSTargetPlatformSettings\TVOSTargetPlatformSettings.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\IOS\TVOSTargetPlatform\TVOSTargetPlatform.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\IoStoreUtilities\IoStoreUtilities.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\LauncherServices\LauncherServices.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\LegacyProjectLauncher\LegacyProjectLauncher.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Linux\LinuxArm64TargetPlatformControls\LinuxArm64TargetPlatformControls.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Linux\LinuxArm64TargetPlatformSettings\LinuxArm64TargetPlatformSettings.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Linux\LinuxArm64TargetPlatform\LinuxArm64TargetPlatform.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Linux\LinuxPlatformEditor\LinuxPlatformEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Linux\LinuxTargetPlatformControls\LinuxTargetPlatformControls.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Linux\LinuxTargetPlatformSettings\LinuxTargetPlatformSettings.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Linux\LinuxTargetPlatform\LinuxTargetPlatform.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\LocalizationService\LocalizationService.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Localization\Localization.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\LogVisualizer\LogVisualizer.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\LowLevelTestsRunner\LowLevelTestsRunner.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Mac\MacPlatformEditor\MacPlatformEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Mac\MacTargetPlatformControls\MacTargetPlatformControls.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Mac\MacTargetPlatformSettings\MacTargetPlatformSettings.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Mac\MacTargetPlatform\MacTargetPlatform.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\MassEntityTestSuite\MassEntityTestSuite.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\MaterialBaking\MaterialBaking.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\MaterialUtilities\MaterialUtilities.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Merge\Merge.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\MeshBoneReduction\MeshBoneReduction.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\MeshBuilderCommon\MeshBuilderCommon.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\MeshBuilder\MeshBuilder.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\MeshDescriptionOperations\MeshDescriptionOperations.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\MeshMergeUtilities\MeshMergeUtilities.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\MeshReductionInterface\MeshReductionInterface.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\MeshSimplifier\QuadricMeshReduction.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\MeshUtilitiesEngine\MeshUtilitiesEngine.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\MeshUtilities\MeshUtilities.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\MessageLog\MessageLog.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\NaniteBuilder\NaniteBuilder.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\NaniteUtilities\NaniteUtilities.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\OutputLog\OutputLog.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\PakFileUtilities\PakFileUtilities.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\PhysicsUtilities\PhysicsUtilities.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\ProfileVisualizer\ProfileVisualizer.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\ProfilerClient\ProfilerClient.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\ProfilerMessages\ProfilerMessages.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\ProfilerService\ProfilerService.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Profiler\Profiler.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\S3Client\S3Client.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\ScreenShotComparisonTools\ScreenShotComparisonTools.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\ScreenShotComparison\ScreenShotComparison.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\ScriptDisassembler\ScriptDisassembler.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\SessionFrontend\SessionFrontend.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\SettingsEditor\SettingsEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Settings\Settings.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\ShaderCompilerCommon\ShaderCompilerCommon.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\ShaderFormatOpenGL\ShaderFormatOpenGL.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\ShaderFormatVectorVM\ShaderFormatVectorVM.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\ShaderPreprocessor\ShaderPreprocessor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\SharedSettingsWidgets\SharedSettingsWidgets.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\SkeletalMeshUtilitiesCommon\SkeletalMeshUtilitiesCommon.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\SlackIntegrations\SlackIntegrations.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\SlateFileDialogs\SlateFileDialogs.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\SlateFontDialog\SlateFontDialog.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\SlateReflector\SlateReflector.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\SourceCodeAccess\SourceCodeAccess.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\SourceControlCheckInPrompt\SourceControlCheckInPrompt.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\SourceControlViewport\SourceControlViewport.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\SourceControl\SourceControl.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\StandaloneRenderer\StandaloneRenderer.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\StructUtilsTestSuite\StructUtilsTestSuite.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\TargetDeviceServices\TargetDeviceServices.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\TargetPlatform\TargetPlatform.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\TextureBuildUtilities\TextureBuildUtilities.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\TextureBuild\TextureBuild.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\TextureCompressor\TextureCompressor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\TextureFormatASTC\TextureFormatASTC.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\TextureFormatDXT\TextureFormatDXT.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\TextureFormatETC2\TextureFormatETC2.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\TextureFormatIntelISPCTexComp\TextureFormatIntelISPCTexComp.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\TextureFormatUncompressed\TextureFormatUncompressed.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\TextureFormat\TextureFormat.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\ToolMenus\ToolMenus.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\ToolWidgets\ToolWidgets.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\TraceAnalysis\TraceAnalysis.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\TraceInsightsCore\TraceInsightsCore.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\TraceInsightsFrontend\TraceInsightsFrontend.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\TraceInsights\TraceInsights.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\TraceServices\TraceServices.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\TraceTools\TraceTools.build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\TranslationEditor\TranslationEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\TreeMap\TreeMap.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\TurnkeyIO\TurnkeyIO.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\UbaCoordinatorHorde\UbaCoordinatorHorde.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\UncontrolledChangelists\UncontrolledChangelists.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\UndoHistory\UndoHistory.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\UnsavedAssetsTracker\Source\UnsavedAssetsTracker.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Virtualization\Virtualization.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\VisualGraphUtils\VisualGraphUtils.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\VulkanShaderFormat\VulkanShaderFormat.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\WidgetRegistration\WidgetRegistration.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Windows\LiveCodingServer\LiveCodingServer.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Windows\LiveCoding\LiveCoding.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Windows\ShaderFormatD3D\ShaderFormatD3D.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Windows\WindowsPlatformEditor\WindowsPlatformEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Windows\WindowsTargetPlatfomControls\WindowsTargetPlatformControls.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Windows\WindowsTargetPlatformSettings\WindowsTargetPlatformSettings.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Windows\WindowsTargetPlatform\WindowsTargetPlatform.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Developer\Zen\Zen.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\AIGraph\AIGraph.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\ActionableMessage\ActionableMessage.build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\ActorPickerMode\ActorPickerMode.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\AddContentDialog\AddContentDialog.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\AdvancedPreviewScene\AdvancedPreviewScene.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\AnimGraph\AnimGraph.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\AnimationBlueprintEditor\AnimationBlueprintEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\AnimationBlueprintLibrary\AnimationBlueprintLibrary.build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\AnimationEditMode\AnimationEditMode.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\AnimationEditorWidgets\AnimationEditorWidgets.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\AnimationEditor\AnimationEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\AnimationModifiers\AnimationModifiers.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\AnimationSettings\AnimationSettings.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\AssetDefinition\AssetDefinition.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\AssetTagsEditor\AssetTagsEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\AudioEditor\AudioEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\BehaviorTreeEditor\BehaviorTreeEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\BlueprintEditorLibrary\BlueprintEditorLibrary.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\BlueprintGraph\BlueprintGraph.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\Blutility\Blutility.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\CSVtoSVG\CSVtoSVG.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\ClassViewer\ClassViewer.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\ClothPainter\ClothPainter.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\ClothingSystemEditorInterface\ClothingSystemEditorInterface.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\ClothingSystemEditor\ClothingSystemEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\CommonMenuExtensions\CommonMenuExtensions.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\ComponentVisualizers\ComponentVisualizers.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\ConfigEditor\ConfigEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\ContentBrowserData\ContentBrowserData.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\ContentBrowser\ContentBrowser.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\CurveAssetEditor\CurveAssetEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\CurveEditor\CurveEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\CurveTableEditor\CurveTableEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\DataHierarchyEditor\DataHierarchyEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\DataLayerEditor\DataLayerEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\DataTableEditor\DataTableEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\DerivedDataEditor\DerivedDataEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\DerivedDataWidgets\DerivedDataWidgets.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\DetailCustomizations\DetailCustomizations.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\DeviceProfileEditor\DeviceProfileEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\DeviceProfileServices\DeviceProfileServices.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\DistCurveEditor\DistCurveEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\Documentation\Documentation.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\EditorConfig\EditorConfig.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\EditorFramework\EditorFramework.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\EditorSettingsViewer\EditorSettingsViewer.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\EditorStyle\EditorStyle.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\EditorSubsystem\EditorSubsystem.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\EditorWidgets\EditorWidgets.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\EnvironmentLightingViewer\EnvironmentLightingViewer.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\Experimental\EditorInteractiveToolsFramework\EditorInteractiveToolsFramework.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\FoliageEdit\FoliageEdit.build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\FontEditor\FontEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\GameProjectGeneration\GameProjectGeneration.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\GameplayDebugger\GameplayDebuggerEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\GameplayTasksEditor\GameplayTasksEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\GraphEditor\GraphEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\HardwareTargeting\HardwareTargeting.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\HierarchicalLODOutliner\HierarchicalLODOutliner.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\InputBindingEditor\InputBindingEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\InternationalizationSettings\InternationalizationSettings.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\KismetCompiler\KismetCompiler.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\KismetWidgets\KismetWidgets.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\Kismet\Kismet.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\LandscapeEditorUtilities\LandscapeEditorUtilities.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\LandscapeEditor\LandscapeEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\Layers\Layers.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\LevelEditor\LevelEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\LevelInstanceEditor\LevelInstanceEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\LocalizationCommandletExecution\LocalizationCommandletExecution.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\LocalizationDashboard\LocalizationDashboard.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\MainFrame\MainFrame.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\MassEntityDebugger\MassEntityDebugger.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\MassEntityEditor\MassEntityEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\MaterialEditor\MaterialEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\MergeActors\MergeActors.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\MeshPaint\MeshPaint.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\MovieSceneCaptureDialog\MovieSceneCaptureDialog.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\MovieSceneTools\MovieSceneTools.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\NNEEditor\NNEEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\NewLevelDialog\NewLevelDialog.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\OverlayEditor\OverlayEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\PIEPreviewDeviceProfileSelector\PIEPreviewDeviceProfileSelector.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\PIEPreviewDeviceSpecification\PIEPreviewDeviceSpecification.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\PListEditor\PListEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\PackagesDialog\PackagesDialog.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\Persona\Persona.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\PhysicsAssetEditor\PhysicsAssetEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\PinnedCommandList\PinnedCommandList.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\PixelInspector\PixelInspectorModule.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\PlacementMode\PlacementMode.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\PluginWarden\PluginWarden.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\ProjectSettingsViewer\ProjectSettingsViewer.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\ProjectTargetPlatformEditor\ProjectTargetPlatformEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\PropertyEditor\PropertyEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\RenderResourceViewer\RenderResourceViewer.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\RewindDebuggerInterface\RewindDebuggerInterface.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\SVGDistanceField\SVGDistanceField.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\SceneDepthPickerMode\SceneDepthPickerMode.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\SceneOutliner\SceneOutliner.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\ScriptableEditorWidgets\ScriptableEditorWidgets.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\SequenceRecorderSections\SequenceRecorderSections.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\SequenceRecorder\SequenceRecorder.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\SequencerCore\SequencerCore.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\SequencerWidgets\SequencerWidgets.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\Sequencer\Sequencer.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\SerializedRecorderInterface\SerializedRecorderInterface.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\SkeletalMeshEditor\SkeletalMeshEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\SkeletonEditor\SkeletonEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\SourceControlWindowExtender\SourceControlWindowExtender.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\SourceControlWindows\SourceControlWindows.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\SparseVolumeTexture\SparseVolumeTexture.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\StaticMeshEditor\StaticMeshEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\StatsViewer\StatsViewer.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\StatusBar\StatusBar.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\StorageServerWidgets\StorageServerWidgets.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\StringTableEditor\StringTableEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\StructUtilsEditor\StructUtilsEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\StructViewer\StructViewer.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\SubobjectDataInterface\SubobjectDataInterface.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\SubobjectEditor\SubobjectEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\SwarmInterface\SwarmInterface.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\TextureEditor\TextureEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\ToolMenusEditor\ToolMenusEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\TurnkeySupport\TurnkeySupport.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\UATHelper\UATHelper.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\UMGEditor\UMGEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\UndoHistoryEditor\UndoHistoryEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\UniversalObjectLocatorEditor\UniversalObjectLocatorEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\UnrealEdMessages\UnrealEdMessages.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\UnrealEd\UnrealEd.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\VREditor\VREditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\ViewportInteraction\ViewportInteraction.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\ViewportSnapping\ViewportSnapping.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\VirtualTexturingEditor\VirtualTexturingEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\VirtualizationEditor\VirtualizationEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\WorkspaceMenuStructure\WorkspaceMenuStructure.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\WorldBookmark\WorldBookmark.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\WorldBrowser\WorldBrowser.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\WorldPartitionEditor\WorldPartitionEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Editor\ZenEditor\ZenEditor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Programs\LiveLinkHub\Source\LiveLinkHubLauncher\LiveLinkHubLauncher.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Programs\Shared\EpicGames.Perforce.Native\DotNetPerforceLib.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\AIModule\AIModule.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\AVEncoder\AVEncoder.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\AVIWriter\AVIWriter.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\AdpcmAudioDecoder\Module\AdpcmAudioDecoder.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\AdvancedWidgets\AdvancedWidgets.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\Advertising\Advertising\Advertising.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\Advertising\Android\AndroidAdvertising\AndroidAdvertising.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\Advertising\IOS\IOSAdvertising\IOSAdvertising.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\Analytics\AnalyticsET\AnalyticsET.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\Analytics\AnalyticsHorde\AnalyticsHorde.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\Analytics\AnalyticsLog\AnalyticsLog.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\Analytics\AnalyticsSwrve\AnalyticsSwrve.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\Analytics\AnalyticsVisualEditing\AnalyticsVisualEditing.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\Analytics\Analytics\Analytics.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\Analytics\TelemetryUtils\TelemetryUtils.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\Android\AndroidLocalNotification\AndroidLocalNotification.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\Android\AndroidRuntimeSettings\AndroidRuntimeSettings.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\Android\AudioMixerAndroid\AudioMixerAndroid.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\AnimGraphRuntime\AnimGraphRuntime.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\AnimationCore\AnimationCore.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\AppFramework\AppFramework.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\Apple\AudioMixerAudioUnit\AudioMixerAudioUnit.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\Apple\AudioMixerCoreAudio\AudioMixerCoreAudio.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\Apple\MetalRHI\MetalRHI.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\ApplicationCore\ApplicationCore.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\AssetRegistry\AssetRegistry.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\AudioAnalyzer\AudioAnalyzer.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\AudioCaptureCore\AudioCaptureCore.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\AudioCaptureImplementations\Android\AudioCaptureAndroid\AudioCaptureAndroid.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\AudioCaptureImplementations\AudioCaptureRtAudio\AudioCaptureRtAudio.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\AudioCaptureImplementations\IOS\AudioCaptureAudioUnit\AudioCaptureAudioUnit.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\AudioCaptureImplementations\Windows\AudioCaputureWasapi\AudioCaptureWasapi.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\AudioDeviceEnumeration\Windows\WindowsMMDeviceEnumeration\WindowsMMDeviceEnumeration.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\AudioExtensions\AudioExtensions.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\AudioLink\AudioLinkCore\AudioLinkCore.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\AudioLink\AudioLinkEngine\AudioLinkEngine.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\AudioLink\AudioMixerPlatformAudioLink\AudioMixerPlatformAudioLink.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\AudioMixerCore\AudioMixerCore.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\AudioMixer\AudioMixer.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\AudioPlatformConfiguration\AudioPlatformConfiguration.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\AudioPlatformSupport\Windows\WASAPI\AudioPlatformSupportWasapi.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\AugmentedReality\AugmentedReality.build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\AutoRTFM\AutoRTFM.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\AutomationMessages\AutomationMessages.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\AutomationTest\AutomationTest.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\AutomationWorker\AutomationWorker.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\BinkAudioDecoder\Module\BinkAudioDecoder.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\BlueprintRuntime\BlueprintRuntime.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\BuildSettings\BuildSettings.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\CEF3Utils\CEF3Utils.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\CUDA\Source\CUDA.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\Cbor\Cbor.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\CinematicCamera\CinematicCamera.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\ClientPilot\ClientPilot.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\ClothingSystemRuntimeCommon\ClothingSystemRuntimeCommon.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\ClothingSystemRuntimeInterface\ClothingSystemRuntimeInterface.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\ClothingSystemRuntimeNv\ClothingSystemRuntimeNv.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\ColorManagement\ColorManagement.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\CookOnTheFly\CookOnTheFly.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\CoreOnline\CoreOnline.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\CorePreciseFP\CorePreciseFP.build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\CoreUObject\CoreUObject.Build.cs
+AddProjectsForAllModules F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\Core\Core.Build.cs
+Adding projects for all modules took 0.10s
+Unhandled exception: IOException: 文件或目录损坏且无法读取。 : 'F:\Unreal Projects\UE_5.6\Engine\Source\Runtime\Core\Public'
+   at System.IO.Enumeration.FileSystemEnumerator`1.FindNextEntry()
+   at System.IO.Enumeration.FileSystemEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.IO.DirectoryInfo.GetFiles(String searchPattern, EnumerationOptions enumerationOptions)
+   at UnrealBuildBase.DirectoryItem.CacheFiles()
+   at UnrealBuildBase.DirectoryItem.EnumerateFiles()
+   at UnrealBuildBase.DirectoryLookupCache.EnumerateFiles(DirectoryReference Directory)
+   at UnrealBuildTool.SourceFileSearch.FindFilesInternal(DirectoryReference Directory, String[] ExcludedDirectorySuffixes, List`1 FoundFiles, HashSet`1 SearchedDirectories)
+   at UnrealBuildTool.SourceFileSearch.FindFilesInternalRecursive(DirectoryReference Directory, String[] ExcludedDirectorySuffixes, List`1 FoundFiles, HashSet`1 SearchedDirectories)
+   at UnrealBuildTool.SourceFileSearch.FindFilesInternalRecursive(DirectoryReference Directory, String[] ExcludedDirectorySuffixes, List`1 FoundFiles, HashSet`1 SearchedDirectories)
+   at UnrealBuildTool.SourceFileSearch.FindFiles(DirectoryReference DirectoryToSearch, List`1 SubdirectoryNamesToExclude, Boolean SearchSubdirectories, HashSet`1 SearchedDirectories)
+   at UnrealBuildTool.SourceFileSearch.FindModuleSourceFiles(FileReference ModuleRulesFile, Boolean SearchSubdirectories, HashSet`1 SearchedDirectories)
+   at UnrealBuildTool.ProjectFileGenerator.AddProjectsForAllModules(List`1 AllGames, Dictionary`2 ProjectFileToUProjectFile, Dictionary`2 ProgramProjects, List`1 ModProjects, List`1 AllModuleFiles, Dictionary`2 AdditionalSearchPaths, Boolean bGatherThirdPartySource, ILogger Logger)
+   at UnrealBuildTool.ProjectFileGenerator.GenerateProjectFiles(PlatformProjectGeneratorCollection PlatformProjectGenerators, String[] Arguments, ILogger Logger)
+   at UnrealBuildTool.ProjectFileGenerator.GenerateProjectFiles(PlatformProjectGeneratorCollection PlatformProjectGenerators, String[] Arguments, Boolean bCacheDataForEditor, ILogger Logger)
+   at UnrealBuildTool.GenerateProjectFilesMode.ExecuteAsync(CommandLineArguments Arguments, ILogger Logger)
+   at UnrealBuildTool.UnrealBuildTool.Main(String[] ArgumentsArray)
+WriteFileIfChanged() wrote 0 changed files of 4 requested writes.
+
+Timeline:
+[  0.000]  +0.284 Main
+   0.069          [  0.068]  +0.101 Apply XmlConfig
+   0.219          [  0.219]  +0.065 RegisterPlatforms
+[  0.285]  +1.386 GenerateProjectFilesMode
+   0.397          [  0.112]  +1.274 Generating VisualStudio project files
+   0.489             0.204          [  0.092]  +0.025 DiscoverTargets
+   0.517             0.232          [  0.120]  +1.038 Adding projects for all targets
+   1.557             1.272          [  1.159]  +0.001 Adding projects for all game projects
+   1.558             1.273          [  1.161]  +0.007 Adding Engine Source
+   1.571             1.286          [  1.174]  +0.099 Adding projects for all modules
+[  1.679]  +0.000 TelemetryService.FlushEvents
+[  1.680]
+
+Result: Failed (OtherCompilationError)
+Total execution time: 1.68 seconds
