@@ -22,6 +22,7 @@ AExplosiveBarrel::AExplosiveBarrel()
 		TEXT("MeshComp"));
 	this->MeshComp->SetSimulatePhysics(true);
 	this->MeshComp->SetCollisionProfileName(TEXT("PhysicsActor"));
+	this->MeshComp->SetCanEverAffectNavigation(false);
 	this->RootComponent = this->MeshComp;
 
 	this->RadialForceComp = CreateDefaultSubobject<URadialForceComponent>(
