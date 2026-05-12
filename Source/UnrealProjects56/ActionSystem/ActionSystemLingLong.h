@@ -11,10 +11,13 @@ struct FLingLongAttribute
 {
 	GENERATED_BODY()
 	
-	FLingLongAttribute() : Health(100.0f) {}
+	FLingLongAttribute() : Health(100.0f), HealthMax(100.0f) {}
 	
 	UPROPERTY(BlueprintReadOnly)
 	float Health;
+	
+	UPROPERTY(BlueprintReadOnly)
+	float HealthMax;
 };
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnHealthChange, float, NewHealth, float, OldHealth);
@@ -31,10 +34,12 @@ protected:
 
 public:
 	
+	UActionSystemLingLong();
+	
 	UPROPERTY(BlueprintAssignable)
 	FOnHealthChange OnHealthChanged;
 	
-	UActionSystemLingLong();
+	bool IsFullHealth() const;
 	
 	void ApplyHealthChange(float Value);
 	
