@@ -3,12 +3,18 @@
 
 #include "LingLongBTTask_RangedAttack.h"
 #include "AIController.h"
+#include "LingLongTypes.h"
 
 #include "BehaviorTree/BlackboardComponent.h"
 
 #include "Projectiles/ProjectileBase.h"
 
 #include "GameFramework/Character.h"
+
+ULingLongBTTask_RangedAttack::ULingLongBTTask_RangedAttack()
+{
+	this->TargetActorKey.SelectedKeyName = NAME_TargetActor;
+}
 
 EBTNodeResult::Type
 ULingLongBTTask_RangedAttack::ExecuteTask(UBehaviorTreeComponent& OwnerComp,
@@ -45,3 +51,4 @@ ULingLongBTTask_RangedAttack::ExecuteTask(UBehaviorTreeComponent& OwnerComp,
 	return NewProj != nullptr ? 
 		EBTNodeResult::Succeeded : EBTNodeResult::Failed;
 }
+

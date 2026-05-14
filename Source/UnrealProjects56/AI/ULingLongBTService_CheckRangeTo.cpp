@@ -3,8 +3,15 @@
 
 #include "ULingLongBTService_CheckRangeTo.h"
 #include "AIController.h"
+#include "LingLongTypes.h"
 
 #include "BehaviorTree/BlackboardComponent.h"
+
+UULingLongBTService_CheckRangeTo::UULingLongBTService_CheckRangeTo()
+{
+	this->TargetActorKey.SelectedKeyName = NAME_TargetActor;
+}
+
 
 void UULingLongBTService_CheckRangeTo::TickNode(UBehaviorTreeComponent& OwnerComp,
                                                 uint8* NodeMemory,
@@ -37,3 +44,4 @@ void UULingLongBTService_CheckRangeTo::TickNode(UBehaviorTreeComponent& OwnerCom
 		                    IfWithinRange && IfHasLOS);
 	}
 }
+
