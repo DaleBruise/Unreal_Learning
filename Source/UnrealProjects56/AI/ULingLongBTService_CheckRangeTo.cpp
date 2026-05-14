@@ -30,7 +30,7 @@ void UULingLongBTService_CheckRangeTo::TickNode(UBehaviorTreeComponent& OwnerCom
 			TargetLocation,
 			OriginLocation);
 		bool IfWithinRange = DistanceTo < this->MaxAttackRange;
-aa
+
 		bool IfHasLOS = Controller->LineOfSightTo(TargetActor);
 		
 		Ptr->SetValueAsBool(this->WithinRangeKey.SelectedKeyName,
