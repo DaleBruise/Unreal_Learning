@@ -6,6 +6,8 @@
 #include "GameFramework/Character.h"
 #include "LingLongAICharacter.generated.h"
 
+class UActionSystemLingLong;
+
 UCLASS()
 class UNREALPROJECTS56_API ALingLongAICharacter : public ACharacter
 {
@@ -16,4 +18,14 @@ public:
 	ALingLongAICharacter();
 
 
+protected:
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	TObjectPtr<UActionSystemLingLong> ActionSystemComp;
+	
+	virtual float TakeDamage(float DamageAmount,
+						 struct FDamageEvent const& DamageEvent,
+						 class AController* EventInstigator,
+						 AActor* DamageCauser) override;
+	
 };

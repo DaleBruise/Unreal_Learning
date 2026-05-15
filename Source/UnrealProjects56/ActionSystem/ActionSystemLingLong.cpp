@@ -27,6 +27,16 @@ void UActionSystemLingLong::ApplyHealthChange(float Value)
 	UE_LOG(LogTemp, Log, TEXT("Current Health is : %f"), this->Attribute.Health);
 }
 
+float UActionSystemLingLong::GetHealth() const
+{
+	return this->Attribute.Health;
+}
+
+float UActionSystemLingLong::GetHealthMax() const
+{
+	return this->Attribute.HealthMax;
+}
+
 bool UActionSystemLingLong::IsFullHealth() const
 {
 	return FMath::IsNearlyEqual(this->Attribute.Health,

@@ -10,12 +10,14 @@ USTRUCT(BlueprintType)
 struct FLingLongAttribute
 {
 	GENERATED_BODY()
-	
-	FLingLongAttribute() : Health(100.0f), HealthMax(100.0f) {}
-	
+
+	FLingLongAttribute() : Health(100.0f), HealthMax(100.0f)
+	{
+	}
+
 	UPROPERTY(BlueprintReadOnly)
 	float Health;
-	
+
 	UPROPERTY(BlueprintReadOnly)
 	float HealthMax;
 };
@@ -28,20 +30,17 @@ class UNREALPROJECTS56_API UActionSystemLingLong : public UActorComponent
 	GENERATED_BODY()
 
 protected:
-	
 	UPROPERTY(BlueprintReadOnly, Category = "Attributes")
 	FLingLongAttribute Attribute;
 
-public:
-	
 	UActionSystemLingLong();
-	
+
+public:
 	UPROPERTY(BlueprintAssignable)
 	FOnHealthChange OnHealthChanged;
 	
 	bool IsFullHealth() const;
-	
+	float GetHealth() const;
+	float GetHealthMax() const;
 	void ApplyHealthChange(float Value);
-	
-	
 };
