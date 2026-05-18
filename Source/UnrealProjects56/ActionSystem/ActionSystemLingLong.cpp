@@ -3,12 +3,13 @@
 
 #include "ActionSystemLingLong.h"
 
-#include "Player/LingLongChatacter.h"
+#include "LingLongAction.h"
 
 
 // Sets default values for this component's properties
 UActionSystemLingLong::UActionSystemLingLong()
 {
+	this->bWantsInitializeComponent = true;
 }
 
 void UActionSystemLingLong::ApplyHealthChange(float Value)
@@ -25,6 +26,29 @@ void UActionSystemLingLong::ApplyHealthChange(float Value)
 	}
 
 	UE_LOG(LogTemp, Log, TEXT("Current Health is : %f"), this->Attribute.Health);
+}
+
+void UActionSystemLingLong::StartAction(FName InActionName)
+{
+	for (auto const& Action : this->Actions)
+	{
+		if (Action->GetActionName() == InActionName)
+		{
+			Action->StartAction();
+			return;
+		}
+	}
+	
+	UE_LOG(LogTemp, Log, TEXT("No Action found with name %s "), *InActionName.ToString());
+}
+
+void UActionSystemLingLong::InitializeComponent()
+{
+	Super::InitializeComponent();
+	
+	auto NewAction = NewObject<ULingLongAction>(this, 
+		ULingLongAction::StaticClass());
+	this->Actions.Add(NewAction);
 }
 
 float UActionSystemLingLong::GetHealth() const

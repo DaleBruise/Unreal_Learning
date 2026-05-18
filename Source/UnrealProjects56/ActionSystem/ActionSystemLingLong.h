@@ -6,6 +6,8 @@
 #include "Components/ActorComponent.h"
 #include "ActionSystemLingLong.generated.h"
 
+class ULingLongAction;
+
 USTRUCT(BlueprintType)
 struct FLingLongAttribute
 {
@@ -32,10 +34,13 @@ class UNREALPROJECTS56_API UActionSystemLingLong : public UActorComponent
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "Attributes")
 	FLingLongAttribute Attribute;
-
-	UActionSystemLingLong();
+	
+	UPROPERTY()
+	TArray<TObjectPtr<ULingLongAction>> Actions;
 
 public:
+	UActionSystemLingLong();
+	
 	UPROPERTY(BlueprintAssignable)
 	FOnHealthChange OnHealthChanged;
 	
@@ -43,4 +48,6 @@ public:
 	float GetHealth() const;
 	float GetHealthMax() const;
 	void ApplyHealthChange(float Value);
+	void StartAction(FName InActionName);
+	virtual void InitializeComponent() override;
 };

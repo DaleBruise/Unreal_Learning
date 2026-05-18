@@ -63,7 +63,7 @@ void ALingLongCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	EnhancedInput->BindAction(this->Input_PrimaryAttack,
 	                          ETriggerEvent::Triggered,
 	                          this,
-	                          &ALingLongCharacter::StartProjectileAttack, this->PrimaryAttackProjectile);
+	                          &ALingLongCharacter::StartAction, FName("PrimaryAttack"));
 	EnhancedInput->BindAction(this->Input_SecondaryAttack,
 	                          ETriggerEvent::Triggered,
 	                          this,
@@ -238,6 +238,11 @@ float ALingLongCharacter::TakeDamage(float DamageAmount,
 	this->ActionSystemComp->ApplyHealthChange(ActualDamage);
 
 	return ActualDamage;
+}
+
+void ALingLongCharacter::StartAction(FName InActionName)
+{
+	this->ActionSystemComp->StartAction(InActionName);
 }
 
 void ALingLongCharacter::Jump()
