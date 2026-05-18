@@ -38,17 +38,28 @@ void UActionSystemLingLong::StartAction(FName InActionName)
 			return;
 		}
 	}
-	
+
 	UE_LOG(LogTemp, Log, TEXT("No Action found with name %s "), *InActionName.ToString());
+}
+
+void UActionSystemLingLong::GrantAction(TSubclassOf<ULingLongAction> NewActionClass)
+{
+	auto NewAction = NewObject<ULingLongAction>(this,
+	                                            NewActionClass);
+	this->Actions.Add(NewAction);
 }
 
 void UActionSystemLingLong::InitializeComponent()
 {
 	Super::InitializeComponent();
-	
-	auto NewAction = NewObject<ULingLongAction>(this, 
-		ULingLongAction::StaticClass());
-	this->Actions.Add(NewAction);
+
+	for (auto const& Action : this->DefaultActions)
+	{
+		if (ensure(Action))
+		{
+			this->GrantAction(Action);
+		}
+	}
 }
 
 float UActionSystemLingLong::GetHealth() const

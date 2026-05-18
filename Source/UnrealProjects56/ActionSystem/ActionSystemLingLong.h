@@ -32,22 +32,26 @@ class UNREALPROJECTS56_API UActionSystemLingLong : public UActorComponent
 	GENERATED_BODY()
 
 protected:
-	UPROPERTY(BlueprintReadOnly, Category = "Attributes")
+	UPROPERTY(BlueprintReadOnly, Category="Attributes")
 	FLingLongAttribute Attribute;
-	
+
 	UPROPERTY()
 	TArray<TObjectPtr<ULingLongAction>> Actions;
 
+	UPROPERTY(EditAnywhere, Category="Actions")
+	TArray<TSubclassOf<ULingLongAction>> DefaultActions;
+
 public:
 	UActionSystemLingLong();
-	
+
 	UPROPERTY(BlueprintAssignable)
 	FOnHealthChange OnHealthChanged;
-	
+
 	bool IsFullHealth() const;
 	float GetHealth() const;
 	float GetHealthMax() const;
 	void ApplyHealthChange(float Value);
 	void StartAction(FName InActionName);
+	void GrantAction(TSubclassOf<ULingLongAction> NewActionClass);
 	virtual void InitializeComponent() override;
 };

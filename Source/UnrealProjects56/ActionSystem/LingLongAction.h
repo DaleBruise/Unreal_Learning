@@ -6,21 +6,25 @@
 #include "UObject/Object.h"
 #include "LingLongAction.generated.h"
 
+class UActionSystemLingLong;
+
 /**
  * 
  */
-UCLASS()
+UCLASS(Blueprintable, Abstract)
 class UNREALPROJECTS56_API ULingLongAction : public UObject
 {
 	GENERATED_BODY()
 	
 public:
 	
-	void StartAction();
+	virtual void StartAction();
 	FName GetActionName() const;
-	
+	UActionSystemLingLong* GetOwningComponent() const;
+
 protected:
 	
 	UPROPERTY(EditDefaultsOnly, Category="Actions")
 	FName ActionName = FName("PrimaryAttack");
+
 };

@@ -13,13 +13,8 @@ class USpringArmComponent;
 class UCameraComponent;
 class UActionSystemLingLong;
 class UInputAction;
-class ALingLongProjectileMagic;
 class UAnimMontage;
-class UNiagaraSystem;
 class USoundBase;
-class AProjectileBase;
-// class USInteractionComponent;
-// class USAttributeComponent;
 
 UCLASS()
 class UNREALPROJECTS56_API ALingLongCharacter : public ACharacter
@@ -58,32 +53,11 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Input")
 	TObjectPtr<UInputAction> Input_Jump;
-
-	UPROPERTY(EditDefaultsOnly, Category = "PrimaryAttack")
-	TSubclassOf<AProjectileBase> PrimaryAttackProjectile;
-
-	UPROPERTY(EditDefaultsOnly, Category="PrimaryAttack")
-	TSubclassOf<AProjectileBase> SecondaryAttackProjectile;
-
-	UPROPERTY(EditDefaultsOnly, Category="PrimaryAttack")
-	TSubclassOf<AProjectileBase> SpecialAttackProjectile;
-
-	UPROPERTY(EditAnywhere, Category = "PrimaryAttack")
-	TObjectPtr<UAnimMontage> AttackMontage;
-
-	UPROPERTY(EditDefaultsOnly, Category = "PrimaryAttack")
-	TObjectPtr<UNiagaraSystem> CastingEffect;
-
-	UPROPERTY(EditDefaultsOnly, Category = "PrimaryAttack")
-	TObjectPtr<USoundBase> CastingSound;
+	
 
 	UPROPERTY(EditAnywhere, Category = "Death")
 	TObjectPtr<UAnimMontage> PlayerDeathMontage;
 	
-
-	UPROPERTY(VisibleAnywhere, Category = "PrimaryAttack")
-	FName MuzzleSocketName;
-
 	UPROPERTY(VisibleAnywhere, Category = "PrimaryAttack")
 	float AttackAnimDelay;
 
@@ -91,9 +65,7 @@ protected:
 	void Move(const FInputActionValue& InValue);
 	void Look(const FInputActionInstance& InValue);
 	void Jump();
-	void StartProjectileAttack(TSubclassOf<AProjectileBase> ProjectileClass); /* Only cares about if it was triggerred or not */
-	void AttackTimerElapsed(TSubclassOf<AProjectileBase> ProjectileClass); /* Only serves StartProjectileAttack() */
-	
+
 	UFUNCTION()
 	void OnHealthChanged(float NewHealth, float OldHealth);
 	

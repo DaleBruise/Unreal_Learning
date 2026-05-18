@@ -3,6 +3,8 @@
 
 #include "LingLongAction.h"
 
+#include "ActionSystemLingLong.h"
+
 void ULingLongAction::StartAction()
 {
 	float GameTime = 0.5f;
@@ -15,4 +17,10 @@ void ULingLongAction::StartAction()
 FName ULingLongAction::GetActionName() const
 {
 	return this->ActionName;
+}
+
+UActionSystemLingLong* ULingLongAction::GetOwningComponent() const
+{
+	const auto Pointer = Cast<UActionSystemLingLong>(this->GetOuter());
+	return Pointer;
 }
