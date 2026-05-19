@@ -27,10 +27,21 @@ public:
 	UActionSystemLingLong* GetOwningComponent() const;
 	
 	FName GetActionName() const;
-
+	bool CanStart() const;
+	bool IsRunning() const;
+	float GetCoolDownTimeRemaining() const;
+	
 protected:
 	
 	UPROPERTY(EditDefaultsOnly, Category="Actions")
-	FName ActionName = FName("PrimaryAttack");
-
+	FName ActionName;
+	
+	UPROPERTY(Transient)
+	float CoolDownUntil = 0.0f;
+	
+	UPROPERTY(EditDefaultsOnly, Category="Actions")
+	float CoolDownTime = 0.0f;
+	
+	UPROPERTY(Transient)
+	bool IsRunningFlag = false;
 };

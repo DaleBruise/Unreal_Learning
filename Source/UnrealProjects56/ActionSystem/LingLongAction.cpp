@@ -7,25 +7,52 @@
 
 void ULingLongAction::StartAction_Implementation()
 {
-	float GameTime = this->GetWorld()->TimeSeconds;
+	this->IsRunningFlag = true;
 	
+	float GameTime = this->GetWorld()->TimeSeconds;
+
 	UE_LOGFMT(LogTemp, Log, "Start Action {ActionName} - {WorldTime}",
-		("ActionName", this->ActionName),
-		("WorldTime", GameTime));
+	          ("ActionName", this->ActionName),
+	          ("WorldTime", GameTime));
 }
 
 void ULingLongAction::StopAction_Implementation()
 {
-	float GameTime = this->GetWorld()->TimeSeconds;
+	this->IsRunningFlag = false;
 	
+	float GameTime = this->GetWorld()->TimeSeconds;
+
 	UE_LOGFMT(LogTemp, Log, "Stopped Action {ActionName} - {WorldTime}",
-		("ActionName", this->ActionName),
-		("WorldTime", GameTime));
+	          ("ActionName", this->ActionName),
+	          ("WorldTime", GameTime));
+
+	this->CoolDownUntil = this->GetWorld()->TimeSeconds + CoolDownTime;
 }
 
 FName ULingLongAction::GetActionName() const
 {
 	return this->ActionName;
+}
+
+bool ULingLongAction::CanStart() const
+{
+	if (this->IsRunning())
+	{
+		return false;
+	}
+	
+	UE_LOG(LogTemp, Log, TEXT("Cool Down Remaining : %f "), this->GetCoolDownTimeRemaining());
+	return this->GetCoolDownTimeRemaining() <= 0.0f;
+}
+
+bool ULingLongAction::IsRunning() const
+{
+	return this->IsRunningFlag;
+}
+
+float ULingLongAction::GetCoolDownTimeRemaining() const
+{
+	return FMath::Max(0.0f, this->CoolDownUntil - this->GetWorld()->TimeSeconds);
 }
 
 UActionSystemLingLong* ULingLongAction::GetOwningComponent() const

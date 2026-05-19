@@ -15,11 +15,13 @@
 ULingLongAction_Projectile::ULingLongAction_Projectile()
 {
 	this->MuzzleSocketName = TEXT("Muzzle_01");
+	
+	this->CoolDownTime = 5.0f;
 }
 
 void ULingLongAction_Projectile::StartAction_Implementation()
 {
-	Super::StartAction();
+	Super::StartAction_Implementation();
 
 	/* Setting the attack animation and sound */
 	UActionSystemLingLong* ActionComp = this->GetOwningComponent();
@@ -47,6 +49,7 @@ void ULingLongAction_Projectile::StartAction_Implementation()
 	                                             &ThisClass::AttackTimerElapsed,
 	                                             AttackAnimDelay,
 	                                             false);
+	
 }
 
 void ULingLongAction_Projectile::AttackTimerElapsed()
@@ -97,6 +100,8 @@ void ULingLongAction_Projectile::AttackTimerElapsed()
 
 	Character->MoveIgnoreActorAdd(NewProjectile);
 
+	this->StopAction();
+	
 	/* Debug stuff */
 	if (CVarInteractionDebugDrawing.GetValueOnGameThread())
 	{
