@@ -5,11 +5,20 @@
 
 #include "ActionSystemLingLong.h"
 
-void ULingLongAction::StartAction()
+void ULingLongAction::StartAction_Implementation()
 {
-	float GameTime = 0.5f;
+	float GameTime = this->GetWorld()->TimeSeconds;
 	
 	UE_LOGFMT(LogTemp, Log, "Start Action {ActionName} - {WorldTime}",
+		("ActionName", this->ActionName),
+		("WorldTime", GameTime));
+}
+
+void ULingLongAction::StopAction_Implementation()
+{
+	float GameTime = this->GetWorld()->TimeSeconds;
+	
+	UE_LOGFMT(LogTemp, Log, "Stopped Action {ActionName} - {WorldTime}",
 		("ActionName", this->ActionName),
 		("WorldTime", GameTime));
 }

@@ -22,7 +22,7 @@ class UNREALPROJECTS56_API ULingLongAction_Projectile : public ULingLongAction
 	GENERATED_BODY()
 
 public:
-	virtual void StartAction() override;
+	virtual void StartAction_Implementation() override;
 	
 	ULingLongAction_Projectile();
 	void AttackTimerElapsed();

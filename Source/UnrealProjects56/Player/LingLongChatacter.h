@@ -36,12 +36,20 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	TObjectPtr<UActionSystemLingLong> ActionSystemComp;
 
+	/* Movements */
 	UPROPERTY(EditDefaultsOnly, Category = "Input")
 	TObjectPtr<UInputAction> Input_Move;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Input")
 	TObjectPtr<UInputAction> Input_Look;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Input")
+	TObjectPtr<UInputAction> Input_Jump;
+	
+	UPROPERTY(EditDefaultsOnly, Category = "Input")
+	TObjectPtr<UInputAction> Input_Sprint;
+	
+	/* Projectiles */
 	UPROPERTY(EditDefaultsOnly, Category = "Input")
 	TObjectPtr<UInputAction> Input_PrimaryAttack;
 
@@ -50,11 +58,8 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, Category="Input")
 	TObjectPtr<UInputAction> Input_SpecialAttack;
-
-	UPROPERTY(EditDefaultsOnly, Category = "Input")
-	TObjectPtr<UInputAction> Input_Jump;
 	
-
+	/* Animations */
 	UPROPERTY(EditAnywhere, Category = "Death")
 	TObjectPtr<UAnimMontage> PlayerDeathMontage;
 	
@@ -75,6 +80,7 @@ protected:
 	                         AActor* DamageCauser) override;
 	
 	void StartAction(FName InActionName);
+	void StopAction(FName InActionName);
 
 public:
 	

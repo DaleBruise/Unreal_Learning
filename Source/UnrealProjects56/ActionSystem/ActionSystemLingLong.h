@@ -52,6 +52,7 @@ public:
 	float GetHealthMax() const;
 	void ApplyHealthChange(float Value);
 	void StartAction(FName InActionName);
+	void StopAction(FName InActionName);
 	void GrantAction(TSubclassOf<ULingLongAction> NewActionClass);
 	virtual void InitializeComponent() override;
 };

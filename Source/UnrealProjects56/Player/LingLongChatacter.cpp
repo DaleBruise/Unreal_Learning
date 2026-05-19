@@ -36,7 +36,8 @@ void ALingLongCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 	UEnhancedInputComponent* EnhancedInput = Cast<UEnhancedInputComponent>(PlayerInputComponent);
-
+	
+	/* Movements */
 	EnhancedInput->BindAction(this->Input_Move,
 	                          ETriggerEvent::Triggered,
 	                          this,
@@ -51,7 +52,18 @@ void ALingLongCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	                          ETriggerEvent::Triggered,
 	                          this,
 	                          &ALingLongCharacter::Jump);
+	
+	EnhancedInput->BindAction(this->Input_Sprint,
+					  ETriggerEvent::Started,
+					  this,
+					  &ThisClass::StartAction, FName("Sprint"));
+	
+	EnhancedInput->BindAction(this->Input_Sprint,
+					  ETriggerEvent::Completed,
+					  this,
+					  &ThisClass::StopAction, FName("Sprint"));
 
+	/* Projectiles */
 	EnhancedInput->BindAction(this->Input_PrimaryAttack,
 	                          ETriggerEvent::Triggered,
 	                          this,
@@ -129,6 +141,12 @@ float ALingLongCharacter::TakeDamage(float DamageAmount,
 void ALingLongCharacter::StartAction(FName InActionName)
 {
 	this->ActionSystemComp->StartAction(InActionName);
+}
+
+void ALingLongCharacter::StopAction(FName InActionName)
+{
+	this->ActionSystemComp->StopAction(InActionName);
+	
 }
 
 void ALingLongCharacter::Jump()

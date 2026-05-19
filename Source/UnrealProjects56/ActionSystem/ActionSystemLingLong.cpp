@@ -30,11 +30,25 @@ void UActionSystemLingLong::ApplyHealthChange(float Value)
 
 void UActionSystemLingLong::StartAction(FName InActionName)
 {
-	for (auto const& Action : this->Actions)
+	for (const auto& Action : this->Actions)
 	{
 		if (Action->GetActionName() == InActionName)
 		{
 			Action->StartAction();
+			return;
+		}
+	}
+
+	UE_LOG(LogTemp, Log, TEXT("No Action found with name %s "), *InActionName.ToString());
+}
+
+void UActionSystemLingLong::StopAction(FName InActionName)
+{
+	for (const auto& Action : this->Actions)
+	{
+		if (Action->GetActionName() == InActionName)
+		{
+			Action->StopAction();
 			return;
 		}
 	}

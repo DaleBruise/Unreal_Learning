@@ -17,10 +17,16 @@ class UNREALPROJECTS56_API ULingLongAction : public UObject
 	GENERATED_BODY()
 	
 public:
+	UFUNCTION(BlueprintNativeEvent, Category="Actions")
+	void StartAction();
 	
-	virtual void StartAction();
-	FName GetActionName() const;
+	UFUNCTION(BlueprintNativeEvent, Category="Actions")
+	void StopAction();
+	
+	UFUNCTION(BlueprintCallable)
 	UActionSystemLingLong* GetOwningComponent() const;
+	
+	FName GetActionName() const;
 
 protected:
 	

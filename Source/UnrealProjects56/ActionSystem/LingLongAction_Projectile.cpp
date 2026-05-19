@@ -17,7 +17,7 @@ ULingLongAction_Projectile::ULingLongAction_Projectile()
 	this->MuzzleSocketName = TEXT("Muzzle_01");
 }
 
-void ULingLongAction_Projectile::StartAction()
+void ULingLongAction_Projectile::StartAction_Implementation()
 {
 	Super::StartAction();
 
