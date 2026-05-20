@@ -7,6 +7,8 @@
 #include "GameplayTagContainer.h"
 #include "ActionSystemLingLong.generated.h"
 
+struct FLingLongAttribute;
+
 class ULingLongAction;
 class ULingLongAttributeSet;
 
@@ -43,6 +45,8 @@ protected:
 	UPROPERTY(EditAnywhere, Category="Attributes", NoClear)
 	TSubclassOf<ULingLongAttributeSet> AttributeSetClass;
 	
+	TMap<FGameplayTag, FLingLongAttribute*> CachedAttributes;
+	
 	UPROPERTY()
 	TArray<TObjectPtr<ULingLongAction>> Actions;
 
@@ -58,11 +62,10 @@ public:
 	FGameplayTagContainer ActiveGameplayTags;
 	
 	bool IsFullHealth() const;
-	float GetHealth() const;
-	float GetHealthMax() const;
 	void ApplyHealthChange(float Value);
 	void StartAction(FGameplayTag InActionName);
 	void StopAction(FGameplayTag InActionName);
 	void GrantAction(TSubclassOf<ULingLongAction> NewActionClass);
 	virtual void InitializeComponent() override;
+	FLingLongAttribute* GetAttribute(FGameplayTag InAttributeTag) const;
 };

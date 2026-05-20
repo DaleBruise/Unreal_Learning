@@ -15,6 +15,34 @@ UActionSystemLingLong::UActionSystemLingLong()
 	this->AttributeSetClass = ULingLongAttributeSet::StaticClass();
 }
 
+void UActionSystemLingLong::InitializeComponent()
+{
+	Super::InitializeComponent();
+	
+	this->Attributes = NewObject<ULingLongAttributeSet>(this, this->AttributeSetClass);
+
+	for (TFieldIterator<FStructProperty> PropIt(this->Attributes->GetClass()); 
+		PropIt != nullptr; ++PropIt)
+	{
+		FStructProperty* StructProp = *PropIt;
+		auto FoundAttribute = 
+			StructProp->ContainerPtrToValuePtr<FLingLongAttribute>(this->Attributes);
+		
+		FName AttributeTagName = FName("Attribute." + PropIt->GetName());
+		FGameplayTag AttributeTag = FGameplayTag::RequestGameplayTag(AttributeTagName);
+		
+		this->CachedAttributes.Add(AttributeTag, FoundAttribute);
+	}
+	
+	for (auto const& Action : this->DefaultActions)
+	{
+		if (ensure(Action))
+		{
+			this->GrantAction(Action);
+		}
+	}
+}
+
 void UActionSystemLingLong::ApplyHealthChange(float Value)
 {
 	// const float OldHealth = this->Attribute.Health;
@@ -69,36 +97,17 @@ void UActionSystemLingLong::GrantAction(TSubclassOf<ULingLongAction> NewActionCl
 	this->Actions.Add(NewAction);
 }
 
-void UActionSystemLingLong::InitializeComponent()
+FLingLongAttribute* UActionSystemLingLong::GetAttribute(FGameplayTag InAttributeTag) const
 {
-	Super::InitializeComponent();
+	/* The address of the pointer pointed at couldn't be changed */
+	auto FoundAttribute = this->CachedAttributes.Find(InAttributeTag); 
 	
-	this->Attributes = NewObject<ULingLongAttributeSet>(this, this->AttributeSetClass);
-
-	for (auto const& Action : this->DefaultActions)
-	{
-		if (ensure(Action))
-		{
-			this->GrantAction(Action);
-		}
-	}
-}
-
-float UActionSystemLingLong::GetHealth() const
-{
-	// return this->Attribute.Health;
-	return 0.0f;
-}
-
-float UActionSystemLingLong::GetHealthMax() const
-{
-	// return this->Attribute.HealthMax;
-	return 0.0f;
+	return *FoundAttribute;
 }
 
 bool UActionSystemLingLong::IsFullHealth() const
 {
 	// return FMath::IsNearlyEqual(this->Attribute.Health,
 	//                             this->Attribute.HealthMax);
-	return 0.0f;
+	return true;
 }
