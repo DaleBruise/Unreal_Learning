@@ -4,28 +4,31 @@
 #include "ActionSystemLingLong.h"
 
 #include "LingLongAction.h"
+#include "LingLongAttributeSet.h"
 
 
 // Sets default values for this component's properties
 UActionSystemLingLong::UActionSystemLingLong()
 {
 	this->bWantsInitializeComponent = true;
+	
+	this->AttributeSetClass = ULingLongAttributeSet::StaticClass();
 }
 
 void UActionSystemLingLong::ApplyHealthChange(float Value)
 {
-	const float OldHealth = this->Attribute.Health;
-
-	this->Attribute.Health = FMath::Clamp(this->Attribute.Health + Value,
-	                                      0.0f,
-	                                      this->Attribute.HealthMax);
-
-	if (!FMath::IsNearlyEqual(OldHealth, this->Attribute.Health))
-	{
-		this->OnHealthChanged.Broadcast(this->Attribute.Health, OldHealth);
-	}
-
-	UE_LOG(LogTemp, Log, TEXT("Current Health is : %f"), this->Attribute.Health);
+	// const float OldHealth = this->Attribute.Health;
+	//
+	// this->Attribute.Health = FMath::Clamp(this->Attribute.Health + Value,
+	//                                       0.0f,
+	//                                       this->Attribute.HealthMax);
+	//
+	// if (!FMath::IsNearlyEqual(OldHealth, this->Attribute.Health))
+	// {
+	// 	this->OnHealthChanged.Broadcast(this->Attribute.Health, OldHealth);
+	// }
+	//
+	// UE_LOG(LogTemp, Log, TEXT("Current Health is : %f"), this->Attribute.Health);
 }
 
 void UActionSystemLingLong::StartAction(FGameplayTag InActionName)
@@ -69,6 +72,8 @@ void UActionSystemLingLong::GrantAction(TSubclassOf<ULingLongAction> NewActionCl
 void UActionSystemLingLong::InitializeComponent()
 {
 	Super::InitializeComponent();
+	
+	this->Attributes = NewObject<ULingLongAttributeSet>(this, this->AttributeSetClass);
 
 	for (auto const& Action : this->DefaultActions)
 	{
@@ -81,16 +86,19 @@ void UActionSystemLingLong::InitializeComponent()
 
 float UActionSystemLingLong::GetHealth() const
 {
-	return this->Attribute.Health;
+	// return this->Attribute.Health;
+	return 0.0f;
 }
 
 float UActionSystemLingLong::GetHealthMax() const
 {
-	return this->Attribute.HealthMax;
+	// return this->Attribute.HealthMax;
+	return 0.0f;
 }
 
 bool UActionSystemLingLong::IsFullHealth() const
 {
-	return FMath::IsNearlyEqual(this->Attribute.Health,
-	                            this->Attribute.HealthMax);
+	// return FMath::IsNearlyEqual(this->Attribute.Health,
+	//                             this->Attribute.HealthMax);
+	return 0.0f;
 }

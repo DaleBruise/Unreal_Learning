@@ -8,22 +8,23 @@
 #include "ActionSystemLingLong.generated.h"
 
 class ULingLongAction;
+class ULingLongAttributeSet;
 
-USTRUCT(BlueprintType)
-struct FLingLongAttribute
-{
-	GENERATED_BODY()
-
-	FLingLongAttribute() : Health(100.0f), HealthMax(100.0f)
-	{
-	}
-
-	UPROPERTY(BlueprintReadOnly)
-	float Health;
-
-	UPROPERTY(BlueprintReadOnly)
-	float HealthMax;
-};
+// USTRUCT(BlueprintType)
+// struct FLingLongAttribute
+// {
+// 	GENERATED_BODY()
+//
+// 	FLingLongAttribute() : Health(100.0f), HealthMax(100.0f)
+// 	{
+// 	}
+//
+// 	UPROPERTY(BlueprintReadOnly)
+// 	float Health;
+//
+// 	UPROPERTY(BlueprintReadOnly)
+// 	float HealthMax;
+// };
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnHealthChange, float, NewHealth, float, OldHealth);
 
@@ -33,9 +34,15 @@ class UNREALPROJECTS56_API UActionSystemLingLong : public UActorComponent
 	GENERATED_BODY()
 
 protected:
-	UPROPERTY(BlueprintReadOnly, Category="Attributes")
-	FLingLongAttribute Attribute;
+	// UPROPERTY(BlueprintReadOnly, Category="Attributes")
+	// FLingLongAttribute Attribute;
 
+	UPROPERTY()
+	TObjectPtr<ULingLongAttributeSet> Attributes;
+	
+	UPROPERTY(EditAnywhere, Category="Attributes", NoClear)
+	TSubclassOf<ULingLongAttributeSet> AttributeSetClass;
+	
 	UPROPERTY()
 	TArray<TObjectPtr<ULingLongAction>> Actions;
 
