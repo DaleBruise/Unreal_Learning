@@ -8,6 +8,7 @@
 
 struct FInputActionValue;
 struct FInputActionInstance;
+struct FGameplayTag;
 
 class USpringArmComponent;
 class UCameraComponent;
@@ -79,8 +80,8 @@ protected:
 	                         class AController* EventInstigator,
 	                         AActor* DamageCauser) override;
 	
-	void StartAction(FName InActionName);
-	void StopAction(FName InActionName);
+	void StartAction(FGameplayTag InActionName);
+	void StopAction(FGameplayTag InActionName);
 
 public:
 	

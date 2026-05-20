@@ -12,7 +12,7 @@ void ULingLongAction::StartAction_Implementation()
 	float GameTime = this->GetWorld()->TimeSeconds;
 
 	UE_LOGFMT(LogTemp, Log, "Start Action {ActionName} - {WorldTime}",
-	          ("ActionName", this->ActionName),
+	          ("ActionName", this->ActionName.ToString()),
 	          ("WorldTime", GameTime));
 }
 
@@ -23,13 +23,13 @@ void ULingLongAction::StopAction_Implementation()
 	float GameTime = this->GetWorld()->TimeSeconds;
 
 	UE_LOGFMT(LogTemp, Log, "Stopped Action {ActionName} - {WorldTime}",
-	          ("ActionName", this->ActionName),
+	          ("ActionName", this->ActionName.ToString()),
 	          ("WorldTime", GameTime));
 
 	this->CoolDownUntil = this->GetWorld()->TimeSeconds + CoolDownTime;
 }
 
-FName ULingLongAction::GetActionName() const
+FGameplayTag ULingLongAction::GetActionName() const
 {
 	return this->ActionName;
 }

@@ -6,6 +6,8 @@
 #include "Components/ActorComponent.h"
 #include "ActionSystemLingLong.generated.h"
 
+struct FGameplayTag;
+
 class ULingLongAction;
 
 USTRUCT(BlueprintType)
@@ -51,8 +53,8 @@ public:
 	float GetHealth() const;
 	float GetHealthMax() const;
 	void ApplyHealthChange(float Value);
-	void StartAction(FName InActionName);
-	void StopAction(FName InActionName);
+	void StartAction(FGameplayTag InActionName);
+	void StopAction(FGameplayTag InActionName);
 	void GrantAction(TSubclassOf<ULingLongAction> NewActionClass);
 	virtual void InitializeComponent() override;
 };

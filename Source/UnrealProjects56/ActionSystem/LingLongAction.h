@@ -3,8 +3,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GameplayTagContainer.h"
 #include "UObject/Object.h"
 #include "LingLongAction.generated.h"
+
+struct FGameplayTag;
+
 
 class UActionSystemLingLong;
 
@@ -26,7 +30,7 @@ public:
 	UFUNCTION(BlueprintCallable)
 	UActionSystemLingLong* GetOwningComponent() const;
 	
-	FName GetActionName() const;
+	FGameplayTag GetActionName() const;
 	bool CanStart() const;
 	bool IsRunning() const;
 	float GetCoolDownTimeRemaining() const;
@@ -34,7 +38,7 @@ public:
 protected:
 	
 	UPROPERTY(EditDefaultsOnly, Category="Actions")
-	FName ActionName;
+	FGameplayTag ActionName;
 	
 	UPROPERTY(Transient)
 	float CoolDownUntil = 0.0f;

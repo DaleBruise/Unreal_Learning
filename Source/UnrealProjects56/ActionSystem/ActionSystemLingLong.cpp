@@ -28,7 +28,7 @@ void UActionSystemLingLong::ApplyHealthChange(float Value)
 	UE_LOG(LogTemp, Log, TEXT("Current Health is : %f"), this->Attribute.Health);
 }
 
-void UActionSystemLingLong::StartAction(FName InActionName)
+void UActionSystemLingLong::StartAction(FGameplayTag InActionName)
 {
 	for (const auto& Action : this->Actions)
 	{
@@ -45,7 +45,7 @@ void UActionSystemLingLong::StartAction(FName InActionName)
 	UE_LOG(LogTemp, Log, TEXT("No Action found with name %s "), *InActionName.ToString());
 }
 
-void UActionSystemLingLong::StopAction(FName InActionName)
+void UActionSystemLingLong::StopAction(FGameplayTag InActionName)
 {
 	for (const auto& Action : this->Actions)
 	{

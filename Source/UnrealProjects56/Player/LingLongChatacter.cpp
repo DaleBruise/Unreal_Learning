@@ -2,6 +2,8 @@
 
 #include "LingLongChatacter.h"
 #include "EnhancedInputComponent.h"
+#include "GameplayTagContainer.h"
+#include "SharedGameplayTags.h"
 
 #include "ActionSystem/ActionSystemLingLong.h"
 
@@ -56,26 +58,31 @@ void ALingLongCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	EnhancedInput->BindAction(this->Input_Sprint,
 					  ETriggerEvent::Started,
 					  this,
-					  &ThisClass::StartAction, FName("Sprint"));
+					  &ThisClass::StartAction, 
+					  SharedGameplayTags::Action_Sprint.GetTag()); //TODO
 	
 	EnhancedInput->BindAction(this->Input_Sprint,
 					  ETriggerEvent::Completed,
 					  this,
-					  &ThisClass::StopAction, FName("Sprint"));
+					  &ThisClass::StopAction, 
+					  SharedGameplayTags::Action_Sprint.GetTag()); //TODO
 
 	/* Projectiles */
 	EnhancedInput->BindAction(this->Input_PrimaryAttack,
 	                          ETriggerEvent::Triggered,
 	                          this,
-	                          &ThisClass::StartAction, FName("PrimaryAttack"));
+	                          &ThisClass::StartAction, 
+	                          SharedGameplayTags::Action_PrimaryAttack.GetTag());
 	EnhancedInput->BindAction(this->Input_SecondaryAttack,
 	                          ETriggerEvent::Triggered,
 	                          this,
-	                          &ThisClass::StartAction, FName("SecondaryAttack"));
+	                          &ThisClass::StartAction, 
+	                          SharedGameplayTags::Action_SecondaryAttack.GetTag());
 	EnhancedInput->BindAction(this->Input_SpecialAttack,
 	                          ETriggerEvent::Triggered,
 	                          this,
-	                          &ThisClass::StartAction, FName("SpecialAttack"));
+	                          &ThisClass::StartAction, 
+	                          SharedGameplayTags::Action_SpecialAttack.GetTag());
 }
 
 void ALingLongCharacter::PostInitializeComponents()
@@ -138,12 +145,12 @@ float ALingLongCharacter::TakeDamage(float DamageAmount,
 	return ActualDamage;
 }
 
-void ALingLongCharacter::StartAction(FName InActionName)
+void ALingLongCharacter::StartAction(FGameplayTag InActionName)
 {
 	this->ActionSystemComp->StartAction(InActionName);
 }
 
-void ALingLongCharacter::StopAction(FName InActionName)
+void ALingLongCharacter::StopAction(FGameplayTag InActionName)
 {
 	this->ActionSystemComp->StopAction(InActionName);
 	
