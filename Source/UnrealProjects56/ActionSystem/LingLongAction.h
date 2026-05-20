@@ -8,7 +8,7 @@
 #include "LingLongAction.generated.h"
 
 struct FGameplayTag;
-
+struct FGameplayTagContainer;
 
 class UActionSystemLingLong;
 
@@ -39,6 +39,13 @@ protected:
 	
 	UPROPERTY(EditDefaultsOnly, Category="Actions")
 	FGameplayTag ActionName;
+	
+	UPROPERTY(EditDefaultsOnly, Category="Actions")
+	FGameplayTagContainer GrantTags;
+	
+	UPROPERTY(EditDefaultsOnly, Category="Actions")
+	FGameplayTagContainer BlockedTags;
+	
 	
 	UPROPERTY(Transient)
 	float CoolDownUntil = 0.0f;

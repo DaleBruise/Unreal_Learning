@@ -14,6 +14,8 @@ void ULingLongAction::StartAction_Implementation()
 	UE_LOGFMT(LogTemp, Log, "Start Action {ActionName} - {WorldTime}",
 	          ("ActionName", this->ActionName.ToString()),
 	          ("WorldTime", GameTime));
+	
+	this->GetOwningComponent()->ActiveGameplayTags.AppendTags(this->GrantTags);
 }
 
 void ULingLongAction::StopAction_Implementation()
@@ -27,6 +29,7 @@ void ULingLongAction::StopAction_Implementation()
 	          ("WorldTime", GameTime));
 
 	this->CoolDownUntil = this->GetWorld()->TimeSeconds + CoolDownTime;
+	this->GetOwningComponent()->ActiveGameplayTags.RemoveTags(this->GrantTags);
 }
 
 FGameplayTag ULingLongAction::GetActionName() const
@@ -39,6 +42,11 @@ bool ULingLongAction::CanStart() const
 	if (this->IsRunning())
 	{
 		return false;
+	}
+	
+	if (this->GetOwningComponent()->ActiveGameplayTags.HasAny(this->BlockedTags))
+	{
+		return false;	
 	}
 	
 	UE_LOG(LogTemp, Log, TEXT("Cool Down Remaining : %f "), this->GetCoolDownTimeRemaining());

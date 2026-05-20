@@ -4,9 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "GameplayTagContainer.h"
 #include "ActionSystemLingLong.generated.h"
-
-struct FGameplayTag;
 
 class ULingLongAction;
 
@@ -49,6 +48,8 @@ public:
 	UPROPERTY(BlueprintAssignable)
 	FOnHealthChange OnHealthChanged;
 
+	FGameplayTagContainer ActiveGameplayTags;
+	
 	bool IsFullHealth() const;
 	float GetHealth() const;
 	float GetHealthMax() const;
