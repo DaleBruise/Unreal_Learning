@@ -11,29 +11,29 @@
 UActionSystemLingLong::UActionSystemLingLong()
 {
 	this->bWantsInitializeComponent = true;
-	
+
 	this->AttributeSetClass = ULingLongAttributeSet::StaticClass();
 }
 
 void UActionSystemLingLong::InitializeComponent()
 {
 	Super::InitializeComponent();
-	
+
 	this->Attributes = NewObject<ULingLongAttributeSet>(this, this->AttributeSetClass);
 
-	for (TFieldIterator<FStructProperty> PropIt(this->Attributes->GetClass()); 
-		PropIt != nullptr; ++PropIt)
+	for (TFieldIterator<FStructProperty> PropIt(this->Attributes->GetClass());
+	     PropIt != nullptr; ++PropIt)
 	{
 		FStructProperty* StructProp = *PropIt;
-		auto FoundAttribute = 
+		auto FoundAttribute =
 			StructProp->ContainerPtrToValuePtr<FLingLongAttribute>(this->Attributes);
-		
+
 		FName AttributeTagName = FName("Attribute." + PropIt->GetName());
 		FGameplayTag AttributeTag = FGameplayTag::RequestGameplayTag(AttributeTagName);
-		
+
 		this->CachedAttributes.Add(AttributeTag, FoundAttribute);
 	}
-	
+
 	for (auto const& Action : this->DefaultActions)
 	{
 		if (ensure(Action))
@@ -43,20 +43,35 @@ void UActionSystemLingLong::InitializeComponent()
 	}
 }
 
-void UActionSystemLingLong::ApplyHealthChange(float Value)
+void UActionSystemLingLong::ApplyAttributeChange(FGameplayTag AttributeTag,
+                                                 float Delta,
+                                                 EAttributeModifiedType ModifyType)
 {
-	// const float OldHealth = this->Attribute.Health;
-	//
-	// this->Attribute.Health = FMath::Clamp(this->Attribute.Health + Value,
-	//                                       0.0f,
-	//                                       this->Attribute.HealthMax);
-	//
-	// if (!FMath::IsNearlyEqual(OldHealth, this->Attribute.Health))
-	// {
-	// 	this->OnHealthChanged.Broadcast(this->Attribute.Health, OldHealth);
-	// }
-	//
-	// UE_LOG(LogTemp, Log, TEXT("Current Health is : %f"), this->Attribute.Health);
+	auto FoundAttribute = this->GetAttribute(AttributeTag);
+	check(FoundAttribute);
+
+	float OldValue = FoundAttribute->GetValue();
+	switch (ModifyType)
+	{
+	case Base:
+		FoundAttribute->Base += Delta;
+		break;
+	case Modifier:
+		FoundAttribute->Modifier += Delta;
+		break;
+	case OverrideBase:
+		FoundAttribute->Base += Delta;
+		break;
+	default:
+		check(false);
+	}
+
+	this->Attributes->PostAttributeChanged();
+	
+	UE_LOGFMT(LogTemp, Log, "Attribute: {0}, New: {1}, Old: {2}",
+	          AttributeTag.ToString(),
+	          FoundAttribute->GetValue(),
+	          OldValue);
 }
 
 void UActionSystemLingLong::StartAction(FGameplayTag InActionName)
@@ -100,14 +115,7 @@ void UActionSystemLingLong::GrantAction(TSubclassOf<ULingLongAction> NewActionCl
 FLingLongAttribute* UActionSystemLingLong::GetAttribute(FGameplayTag InAttributeTag) const
 {
 	/* The address of the pointer pointed at couldn't be changed */
-	auto FoundAttribute = this->CachedAttributes.Find(InAttributeTag); 
-	
-	return *FoundAttribute;
-}
+	auto FoundAttribute = this->CachedAttributes.Find(InAttributeTag);
 
-bool UActionSystemLingLong::IsFullHealth() const
-{
-	// return FMath::IsNearlyEqual(this->Attribute.Health,
-	//                             this->Attribute.HealthMax);
-	return true;
+	return *FoundAttribute;
 }

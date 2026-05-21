@@ -3,6 +3,7 @@
 
 #include "LingLongBTTask_HealSlef.h"
 #include "AIController.h"
+#include "SharedGameplayTags.h"
 
 #include "ActionSystem/ActionSystemLingLong.h"
 
@@ -16,7 +17,12 @@ EBTNodeResult::Type ULingLongBTTask_HealSlef::ExecuteTask(
 	auto ActionComp = Pawn->GetComponentByClass<UActionSystemLingLong>();
 	if (ActionComp != nullptr)
 	{
-		ActionComp->ApplyHealthChange(this->HealAmount);
+		ActionComp->ApplyAttributeChange(
+			SharedGameplayTags::Attribute_Health,
+			this->HealAmount,
+			EAttributeModifiedType::Base);
+		
+		
 		return EBTNodeResult::Succeeded;
 	}
 	else

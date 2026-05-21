@@ -140,7 +140,10 @@ float ALingLongCharacter::TakeDamage(float DamageAmount,
 {
 	float ActualDamage = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser) * (-1.0f);
 
-	this->ActionSystemComp->ApplyHealthChange(ActualDamage);
+	this->ActionSystemComp->ApplyAttributeChange(
+		SharedGameplayTags::Attribute_Health,
+		ActualDamage,
+		EAttributeModifiedType::Base);
 
 	return ActualDamage;
 }

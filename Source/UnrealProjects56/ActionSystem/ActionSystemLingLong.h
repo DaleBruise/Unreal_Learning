@@ -12,21 +12,15 @@ struct FLingLongAttribute;
 class ULingLongAction;
 class ULingLongAttributeSet;
 
-// USTRUCT(BlueprintType)
-// struct FLingLongAttribute
-// {
-// 	GENERATED_BODY()
-//
-// 	FLingLongAttribute() : Health(100.0f), HealthMax(100.0f)
-// 	{
-// 	}
-//
-// 	UPROPERTY(BlueprintReadOnly)
-// 	float Health;
-//
-// 	UPROPERTY(BlueprintReadOnly)
-// 	float HealthMax;
-// };
+
+UENUM()
+enum EAttributeModifiedType
+{
+	Base,
+	Modifier,
+	OverrideBase,
+	Invalid
+};
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnHealthChange, float, NewHealth, float, OldHealth);
 
@@ -36,8 +30,6 @@ class UNREALPROJECTS56_API UActionSystemLingLong : public UActorComponent
 	GENERATED_BODY()
 
 protected:
-	// UPROPERTY(BlueprintReadOnly, Category="Attributes")
-	// FLingLongAttribute Attribute;
 
 	UPROPERTY()
 	TObjectPtr<ULingLongAttributeSet> Attributes;
@@ -61,8 +53,7 @@ public:
 
 	FGameplayTagContainer ActiveGameplayTags;
 	
-	bool IsFullHealth() const;
-	void ApplyHealthChange(float Value);
+	void ApplyAttributeChange(FGameplayTag AttributeTag, float Delta, EAttributeModifiedType ModifyType);
 	void StartAction(FGameplayTag InActionName);
 	void StopAction(FGameplayTag InActionName);
 	void GrantAction(TSubclassOf<ULingLongAction> NewActionClass);

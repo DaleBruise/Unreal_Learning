@@ -3,6 +3,7 @@
 
 #include "LingLongAICharacter.h"
 
+#include "SharedGameplayTags.h"
 #include "ActionSystem/ActionSystemLingLong.h"
 
 // Sets default values
@@ -10,7 +11,7 @@ ALingLongAICharacter::ALingLongAICharacter()
 {
 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-	
+
 	this->ActionSystemComp = this->CreateDefaultSubobject<UActionSystemLingLong>(TEXT(
 		"ActionSystemComp"));
 }
@@ -22,7 +23,10 @@ float ALingLongAICharacter::TakeDamage(float DamageAmount,
 {
 	float ActualDamage = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser) * (-1.0f);
 
-	this->ActionSystemComp->ApplyHealthChange(ActualDamage);
+	this->ActionSystemComp->ApplyAttributeChange(
+		SharedGameplayTags::Attribute_Health,
+		ActualDamage,
+		EAttributeModifiedType::Base);
 
 	return ActualDamage;
 }

@@ -3,10 +3,12 @@
 
 #include "HealthPickUp.h"
 
+#include "SharedGameplayTags.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/SphereComponent.h"
 
 #include "ActionSystem/ActionSystemLingLong.h"
+#include "Core/LingLongGameplayStatics.h"
 
 #include "Kismet/GameplayStatics.h"
 
@@ -33,9 +35,12 @@ void AHealthPickUp::OnActorOverlapped(UPrimitiveComponent* OverlappedComponent,
 {
 	auto ActionComp = OtherActor->GetComponentByClass<UActionSystemLingLong>();
 
-	if (ensure(ActionComp != nullptr) && !ActionComp->IsFullHealth())
+	if (ensure(ActionComp != nullptr) && !ULingLongGameplayStatics::IsFullHealth(ActionComp))
 	{
-		ActionComp->ApplyHealthChange(this->HealingAmount);
+		ActionComp->ApplyAttributeChange(
+			SharedGameplayTags::Attribute_Health,
+			this->HealingAmount,
+			EAttributeModifiedType::Base);
 
 		UGameplayStatics::PlaySoundAtLocation(this,
 		                                      this->PickUpSound,

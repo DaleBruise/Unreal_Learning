@@ -28,6 +28,10 @@ UCLASS()
 class UNREALPROJECTS56_API ULingLongAttributeSet : public UObject
 {
 	GENERATED_BODY()
+	
+public:
+	
+	virtual void PostAttributeChanged() {};
 };
 
 UCLASS()
@@ -42,6 +46,8 @@ public:
 
 	UPROPERTY(EditAnywhere, Category="Attributes")
 	FLingLongAttribute MaxHealth;
+	
+	virtual void PostAttributeChanged() override;
 	
 	ULingLongHealthAttributeSet();
 	
