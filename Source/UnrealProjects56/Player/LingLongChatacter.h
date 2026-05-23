@@ -71,17 +71,14 @@ protected:
 	void Move(const FInputActionValue& InValue);
 	void Look(const FInputActionInstance& InValue);
 	void Jump();
-
-	UFUNCTION()
-	void OnHealthChanged(float NewHealth, float OldHealth);
+	void OnHealthChanged(FGameplayTag AttributeTag, float NewHealth, float OldHealth);
+	void StartAction(FGameplayTag InActionName);
+	void StopAction(FGameplayTag InActionName);
 	
 	virtual float TakeDamage(float DamageAmount,
 	                         struct FDamageEvent const& DamageEvent,
 	                         class AController* EventInstigator,
 	                         AActor* DamageCauser) override;
-	
-	void StartAction(FGameplayTag InActionName);
-	void StopAction(FGameplayTag InActionName);
 
 public:
 	

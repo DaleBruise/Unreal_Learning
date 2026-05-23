@@ -67,6 +67,11 @@ void UActionSystemLingLong::ApplyAttributeChange(FGameplayTag AttributeTag,
 	}
 
 	this->Attributes->PostAttributeChanged();
+	auto* Event = this->AttributeListeners.Find(AttributeTag);
+	if (Event != nullptr)
+	{
+		Event->Broadcast(AttributeTag, FoundAttribute->GetValue(), OldValue);
+	}
 	
 	UE_LOGFMT(LogTemp, Log, "Attribute: {0}, New: {1}, Old: {2}",
 	          AttributeTag.ToString(),
@@ -118,4 +123,9 @@ FLingLongAttribute* UActionSystemLingLong::GetAttribute(FGameplayTag InAttribute
 	auto FoundAttribute = this->CachedAttributes.Find(InAttributeTag);
 
 	return *FoundAttribute;
+}
+
+FOnAttributeChanged& UActionSystemLingLong::GetAttributeListener(FGameplayTag AttributeTag)
+{
+	return this->AttributeListeners.FindOrAdd(AttributeTag);
 }

@@ -22,7 +22,13 @@ enum EAttributeModifiedType
 	Invalid
 };
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnHealthChange, float, NewHealth, float, OldHealth);
+/* 
+ * Delegate是类型安全的函数指针包装器，是一种事件通知器
+ * non-dynamic gives more performance
+*/
+DECLARE_MULTICAST_DELEGATE_ThreeParams(FOnAttributeChanged, 
+	FGameplayTag /*AttributeTags*/, float /*NewAttributeValue*/, float /*NewAttributeValue*/ );
+
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class UNREALPROJECTS56_API UActionSystemLingLong : public UActorComponent
@@ -37,6 +43,8 @@ protected:
 	UPROPERTY(EditAnywhere, Category="Attributes", NoClear)
 	TSubclassOf<ULingLongAttributeSet> AttributeSetClass;
 	
+	TMap<FGameplayTag, FOnAttributeChanged> AttributeListeners;
+	
 	TMap<FGameplayTag, FLingLongAttribute*> CachedAttributes;
 	
 	UPROPERTY()
@@ -48,9 +56,6 @@ protected:
 public:
 	UActionSystemLingLong();
 
-	UPROPERTY(BlueprintAssignable)
-	FOnHealthChange OnHealthChanged;
-
 	FGameplayTagContainer ActiveGameplayTags;
 	
 	void ApplyAttributeChange(FGameplayTag AttributeTag, float Delta, EAttributeModifiedType ModifyType);
@@ -59,4 +64,5 @@ public:
 	void GrantAction(TSubclassOf<ULingLongAction> NewActionClass);
 	virtual void InitializeComponent() override;
 	FLingLongAttribute* GetAttribute(FGameplayTag InAttributeTag) const;
+	FOnAttributeChanged& GetAttributeListener(FGameplayTag AttributeTag);
 };

@@ -38,7 +38,7 @@ void ALingLongCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 	UEnhancedInputComponent* EnhancedInput = Cast<UEnhancedInputComponent>(PlayerInputComponent);
-	
+
 	/* Movements */
 	EnhancedInput->BindAction(this->Input_Move,
 	                          ETriggerEvent::Triggered,
@@ -54,42 +54,43 @@ void ALingLongCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	                          ETriggerEvent::Triggered,
 	                          this,
 	                          &ALingLongCharacter::Jump);
-	
+
 	EnhancedInput->BindAction(this->Input_Sprint,
-					  ETriggerEvent::Started,
-					  this,
-					  &ThisClass::StartAction, 
-					  SharedGameplayTags::Action_Sprint.GetTag()); //TODO
-	
+	                          ETriggerEvent::Started,
+	                          this,
+	                          &ThisClass::StartAction,
+	                          SharedGameplayTags::Action_Sprint.GetTag()); //TODO
+
 	EnhancedInput->BindAction(this->Input_Sprint,
-					  ETriggerEvent::Completed,
-					  this,
-					  &ThisClass::StopAction, 
-					  SharedGameplayTags::Action_Sprint.GetTag()); //TODO
+	                          ETriggerEvent::Completed,
+	                          this,
+	                          &ThisClass::StopAction,
+	                          SharedGameplayTags::Action_Sprint.GetTag()); //TODO
 
 	/* Projectiles */
 	EnhancedInput->BindAction(this->Input_PrimaryAttack,
 	                          ETriggerEvent::Triggered,
 	                          this,
-	                          &ThisClass::StartAction, 
+	                          &ThisClass::StartAction,
 	                          SharedGameplayTags::Action_PrimaryAttack.GetTag());
 	EnhancedInput->BindAction(this->Input_SecondaryAttack,
 	                          ETriggerEvent::Triggered,
 	                          this,
-	                          &ThisClass::StartAction, 
+	                          &ThisClass::StartAction,
 	                          SharedGameplayTags::Action_SecondaryAttack.GetTag());
 	EnhancedInput->BindAction(this->Input_SpecialAttack,
 	                          ETriggerEvent::Triggered,
 	                          this,
-	                          &ThisClass::StartAction, 
+	                          &ThisClass::StartAction,
 	                          SharedGameplayTags::Action_SpecialAttack.GetTag());
 }
 
 void ALingLongCharacter::PostInitializeComponents()
 {
 	Super::PostInitializeComponents();
-
-	this->ActionSystemComp->OnHealthChanged.AddDynamic(this, &ALingLongCharacter::OnHealthChanged);
+	
+	this->ActionSystemComp->GetAttributeListener(SharedGameplayTags::Attribute_Health)
+	    .AddUObject(this, &ThisClass::OnHealthChanged);
 }
 
 void ALingLongCharacter::Move(const FInputActionValue& InValue)
@@ -120,7 +121,7 @@ void ALingLongCharacter::Look(const FInputActionInstance& InValue)
 	/* In Mouse input, Yaw corresponds to the axis X because of the 2D dimension that mouse only has*/
 }
 
-void ALingLongCharacter::OnHealthChanged(float NewHealth, float OldHealth)
+void ALingLongCharacter::OnHealthChanged(FGameplayTag AttributeTag, float NewHealth, float OldHealth)
 {
 	/* Died ? */
 	if (FMath::IsNearlyZero(NewHealth))
@@ -156,7 +157,6 @@ void ALingLongCharacter::StartAction(FGameplayTag InActionName)
 void ALingLongCharacter::StopAction(FGameplayTag InActionName)
 {
 	this->ActionSystemComp->StopAction(InActionName);
-	
 }
 
 void ALingLongCharacter::Jump()
