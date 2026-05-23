@@ -43,6 +43,13 @@ void UActionSystemLingLong::InitializeComponent()
 	}
 }
 
+void UActionSystemLingLong::BeginPlay()
+{
+	Super::BeginPlay();
+	
+	this->Attributes->InitializeAttributes();
+}
+
 void UActionSystemLingLong::ApplyAttributeChange(FGameplayTag AttributeTag,
                                                  float Delta,
                                                  EAttributeModifiedType ModifyType)

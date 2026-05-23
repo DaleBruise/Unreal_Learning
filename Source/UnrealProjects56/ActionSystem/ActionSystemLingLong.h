@@ -13,7 +13,7 @@ class ULingLongAction;
 class ULingLongAttributeSet;
 
 
-UENUM()
+UENUM(BlueprintType)
 enum EAttributeModifiedType
 {
 	Base,
@@ -58,11 +58,14 @@ public:
 
 	FGameplayTagContainer ActiveGameplayTags;
 	
+	UFUNCTION(BlueprintCallable)
 	void ApplyAttributeChange(FGameplayTag AttributeTag, float Delta, EAttributeModifiedType ModifyType);
+	
 	void StartAction(FGameplayTag InActionName);
 	void StopAction(FGameplayTag InActionName);
 	void GrantAction(TSubclassOf<ULingLongAction> NewActionClass);
 	virtual void InitializeComponent() override;
+	virtual void BeginPlay() override;
 	FLingLongAttribute* GetAttribute(FGameplayTag InAttributeTag) const;
 	FOnAttributeChanged& GetAttributeListener(FGameplayTag AttributeTag);
 };

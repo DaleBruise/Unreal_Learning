@@ -6,6 +6,8 @@
 #include "UObject/Object.h"
 #include "LingLongAttributeSet.generated.h"
 
+class UActionSystemLingLong;
+
 USTRUCT()
 struct FLingLongAttribute
 {
@@ -28,10 +30,12 @@ UCLASS()
 class UNREALPROJECTS56_API ULingLongAttributeSet : public UObject
 {
 	GENERATED_BODY()
-	
+
 public:
 	
 	virtual void PostAttributeChanged() {};
+	virtual void InitializeAttributes() {};
+	UActionSystemLingLong* GetOwningComponent() const;
 };
 
 UCLASS()
@@ -50,5 +54,45 @@ public:
 	virtual void PostAttributeChanged() override;
 	
 	ULingLongHealthAttributeSet();
+	
+};
+
+UCLASS()
+class ULingLongPawnAttributeSet : public ULingLongHealthAttributeSet
+{
+	GENERATED_BODY()
+	
+public:
+
+	UPROPERTY(EditAnywhere, Category="Attributes")
+	FLingLongAttribute MoveSpeed;
+	
+	ULingLongPawnAttributeSet();
+	virtual void PostAttributeChanged() override;	
+	virtual void InitializeAttributes() override;
+	
+private:
+	
+	void ApplyMoveSpeed();
+};
+
+
+UCLASS()
+class ULingLongPlayerAttributeSet : public ULingLongPawnAttributeSet
+{
+	GENERATED_BODY()
+	
+public:
+	
+};
+
+UCLASS()
+class ULingLongMonsterAttributeSet : public ULingLongPawnAttributeSet
+{
+	GENERATED_BODY()
+	
+public:
+	
+	ULingLongMonsterAttributeSet();
 	
 };
