@@ -46,7 +46,7 @@ void UActionSystemLingLong::InitializeComponent()
 void UActionSystemLingLong::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 	this->Attributes->InitializeAttributes();
 }
 
@@ -73,17 +73,46 @@ void UActionSystemLingLong::ApplyAttributeChange(FGameplayTag AttributeTag,
 		check(false);
 	}
 
+	/* non-dynamic, native C++ listeners*/
 	this->Attributes->PostAttributeChanged();
-	auto* Event = this->AttributeListeners.Find(AttributeTag);
-	if (Event != nullptr)
+	auto* NativeEvent = this->AttributeListeners.Find(AttributeTag);
+	if (NativeEvent != nullptr)
 	{
-		Event->Broadcast(AttributeTag, FoundAttribute->GetValue(), OldValue);
+		NativeEvent->Broadcast(AttributeTag, FoundAttribute->GetValue(), OldValue);
 	}
-	
+
+	/* dynamic, blueprint listeners*/
+	auto DynamicEvents = this->AttributeDynamicListeners.Find(AttributeTag);
+	if (DynamicEvents != nullptr)
+	{
+		for (auto& SubEvent : *DynamicEvents)
+		{
+			SubEvent.Execute(AttributeTag, FoundAttribute->GetValue(), OldValue);
+		}
+	}
+
 	UE_LOGFMT(LogTemp, Log, "Attribute: {0}, New: {1}, Old: {2}",
 	          AttributeTag.ToString(),
 	          FoundAttribute->GetValue(),
 	          OldValue);
+}
+
+void UActionSystemLingLong::AddDynamicAttributeChange(FOnAttributeDynamicChanged Event,
+                                                      FGameplayTag AttributeTag)
+{
+	TArray<FOnAttributeDynamicChanged>& Events = this->AttributeDynamicListeners.FindOrAdd(AttributeTag);
+	Events.Add(Event);
+}
+
+float UActionSystemLingLong::GetAttributeValue(FGameplayTag InAttributeTag) const
+{
+	auto FoundAttribute = this->GetAttribute(InAttributeTag);
+	if (FoundAttribute != nullptr)
+	{
+		return FoundAttribute->GetValue();
+	}
+
+	return -1;
 }
 
 void UActionSystemLingLong::StartAction(FGameplayTag InActionName)

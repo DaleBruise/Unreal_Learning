@@ -25,10 +25,13 @@ enum EAttributeModifiedType
 /* 
  * Delegate是类型安全的函数指针包装器，是一种事件通知器
  * non-dynamic gives more performance
+ * dynamic is for blueprint
 */
 DECLARE_MULTICAST_DELEGATE_ThreeParams(FOnAttributeChanged, 
-	FGameplayTag /*AttributeTags*/, float /*NewAttributeValue*/, float /*NewAttributeValue*/ );
+	FGameplayTag /*AttributeTags*/, float /*NewAttributeValue*/, float /*OldAttributeValue*/ );
 
+DECLARE_DYNAMIC_DELEGATE_ThreeParams(FOnAttributeDynamicChanged, 
+	FGameplayTag, AttributeTags, float, NewAttributeValue, float, OldAttributeValue );
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class UNREALPROJECTS56_API UActionSystemLingLong : public UActorComponent
@@ -45,6 +48,8 @@ protected:
 	
 	TMap<FGameplayTag, FOnAttributeChanged> AttributeListeners;
 	
+	TMap<FGameplayTag, TArray<FOnAttributeDynamicChanged>> AttributeDynamicListeners;
+	
 	TMap<FGameplayTag, FLingLongAttribute*> CachedAttributes;
 	
 	UPROPERTY()
@@ -60,6 +65,12 @@ public:
 	
 	UFUNCTION(BlueprintCallable)
 	void ApplyAttributeChange(FGameplayTag AttributeTag, float Delta, EAttributeModifiedType ModifyType);
+	
+	UFUNCTION(BlueprintCallable, DisplayName="Add Attribute Listener", meta=(Keywords="events, delegate"))
+	void AddDynamicAttributeChange(FOnAttributeDynamicChanged Event, FGameplayTag AttributeTag);
+
+	UFUNCTION(BlueprintCallable)
+	float GetAttributeValue(FGameplayTag InAttributeTag) const;
 	
 	void StartAction(FGameplayTag InActionName);
 	void StopAction(FGameplayTag InActionName);

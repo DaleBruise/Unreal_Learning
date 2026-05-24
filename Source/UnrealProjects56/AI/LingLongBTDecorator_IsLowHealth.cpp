@@ -18,7 +18,7 @@ bool ULingLongBTDecorator_IsLowHealth::CalculateRawConditionValue(
 	UActionSystemLingLong* ActionComp = Pawn->GetComponentByClass<UActionSystemLingLong>();
 	if (ensure(ActionComp))
 	{
-		check(false);
+		// check(false);
 		// Is low health?
 		return false;//(ActionComp->GetHealth() / ActionComp->GetHealthMax()) < LowHealthFraction;
 	}
