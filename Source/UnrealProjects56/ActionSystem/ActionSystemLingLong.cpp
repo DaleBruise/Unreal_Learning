@@ -87,7 +87,13 @@ void UActionSystemLingLong::ApplyAttributeChange(FGameplayTag AttributeTag,
 	{
 		for (auto& SubEvent : *DynamicEvents)
 		{
-			SubEvent.Execute(AttributeTag, FoundAttribute->GetValue(), OldValue);
+			bool IfBound = SubEvent.ExecuteIfBound(AttributeTag, FoundAttribute->GetValue(), OldValue);
+			if (!IfBound)
+			{
+				DynamicEvents->Remove(SubEvent);
+				UE_LOG(LogTemp, Log, TEXT("Cleaned up expired attribute delegate for %s"),
+				       *GetNameSafe(GetOwner()));
+			}
 		}
 	}
 
@@ -102,6 +108,18 @@ void UActionSystemLingLong::AddDynamicAttributeChange(FOnAttributeDynamicChanged
 {
 	TArray<FOnAttributeDynamicChanged>& Events = this->AttributeDynamicListeners.FindOrAdd(AttributeTag);
 	Events.Add(Event);
+}
+
+void UActionSystemLingLong::RemoveDynamicAttributeListener(FOnAttributeDynamicChanged Event)
+{
+	for (auto& Listener : this->AttributeDynamicListeners)
+	{
+		if (Listener.Value.RemoveSingle(Event) > 0)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Successfully removed blueprint binding"))
+			break;
+		}
+	}
 }
 
 float UActionSystemLingLong::GetAttributeValue(FGameplayTag InAttributeTag) const
