@@ -33,18 +33,15 @@ DECLARE_MULTICAST_DELEGATE_ThreeParams(FOnAttributeChanged,
 DECLARE_DYNAMIC_DELEGATE_ThreeParams(FOnAttributeDynamicChanged, 
 	FGameplayTag, AttributeTags, float, NewAttributeValue, float, OldAttributeValue );
 
-UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
+UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent), HideCategories=(Navigation, Cooking, Tags))
 class UNREALPROJECTS56_API UActionSystemLingLong : public UActorComponent
 {
 	GENERATED_BODY()
 
 protected:
 
-	UPROPERTY()
-	TObjectPtr<ULingLongAttributeSet> Attributes;
-	
-	UPROPERTY(EditAnywhere, Category="Attributes", NoClear)
-	TSubclassOf<ULingLongAttributeSet> AttributeSetClass;
+	UPROPERTY(EditAnywhere, Instanced, NoClear)
+	TObjectPtr<ULingLongAttributeSet> Attributes; 
 	
 	TMap<FGameplayTag, FOnAttributeChanged> AttributeListeners;
 	
@@ -75,6 +72,7 @@ public:
 	UFUNCTION(BlueprintCallable)
 	float GetAttributeValue(FGameplayTag InAttributeTag) const;
 	
+	void SetDefaultAttributeSet(TSubclassOf<ULingLongAttributeSet> AttributeSetClass);
 	void StartAction(FGameplayTag InActionName);
 	void StopAction(FGameplayTag InActionName);
 	void GrantAction(TSubclassOf<ULingLongAction> NewActionClass);

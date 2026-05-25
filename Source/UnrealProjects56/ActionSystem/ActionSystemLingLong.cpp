@@ -11,15 +11,19 @@
 UActionSystemLingLong::UActionSystemLingLong()
 {
 	this->bWantsInitializeComponent = true;
-
-	this->AttributeSetClass = ULingLongAttributeSet::StaticClass();
 }
 
 void UActionSystemLingLong::InitializeComponent()
 {
 	Super::InitializeComponent();
 
-	this->Attributes = NewObject<ULingLongAttributeSet>(this, this->AttributeSetClass);
+	if (this->Attributes == nullptr)
+	{
+		this->Attributes = NewObject<ULingLongAttributeSet>(this, ULingLongAttributeSet::StaticClass());
+		UE_LOG(LogTemp, Log, TEXT("No default AttributeSet defined for %s."),
+		       *GetNameSafe(this->GetOwner()))
+	}
+
 
 	for (TFieldIterator<FStructProperty> PropIt(this->Attributes->GetClass());
 	     PropIt != nullptr; ++PropIt)
@@ -131,6 +135,18 @@ float UActionSystemLingLong::GetAttributeValue(FGameplayTag InAttributeTag) cons
 	}
 
 	return -1;
+}
+
+void UActionSystemLingLong::SetDefaultAttributeSet(TSubclassOf<ULingLongAttributeSet> AttributeSetClass)
+{
+	check(!this->HasBeenInitialized());
+	
+	FObjectInitializer& ObjectInitializer = FObjectInitializer::Get();
+	this->Attributes = Cast<ULingLongAttributeSet>(
+		ObjectInitializer.CreateDefaultSubobject(this,
+		                                         TEXT("Attributes"),
+		                                         AttributeSetClass,
+		                                         AttributeSetClass));
 }
 
 void UActionSystemLingLong::StartAction(FGameplayTag InActionName)

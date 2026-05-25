@@ -29,6 +29,7 @@ ALingLongCharacter::ALingLongCharacter()
 
 	this->ActionSystemComp = this->CreateDefaultSubobject<UActionSystemLingLong>(
 		TEXT("ActionSystemComp"));
+	this->ActionSystemComp->SetDefaultAttributeSet(ThisClass::StaticClass());
 
 	this->AttackAnimDelay = 0.2f;
 }

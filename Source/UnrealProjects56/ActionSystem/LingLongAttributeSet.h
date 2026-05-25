@@ -26,7 +26,7 @@ struct FLingLongAttribute
 	
 };
 
-UCLASS()
+UCLASS(EditinlineNew)
 class UNREALPROJECTS56_API ULingLongAttributeSet : public UObject
 {
 	GENERATED_BODY()
@@ -64,10 +64,10 @@ class ULingLongPawnAttributeSet : public ULingLongHealthAttributeSet
 	
 public:
 
-	UPROPERTY(EditAnywhere, Category="Attributes")
+	UPROPERTY(EditAnywhere, Category="MoveSpeed")
 	FLingLongAttribute MoveSpeed;
 	
-	UPROPERTY(EditAnywhere, Category="Attributes")
+	UPROPERTY(EditAnywhere, Category="MoveSpeed")
 	FLingLongAttribute MoveSpeedMultiplier;
 	
 	ULingLongPawnAttributeSet();
@@ -87,7 +87,7 @@ class ULingLongPlayerAttributeSet : public ULingLongPawnAttributeSet
 	
 public:
 	
-	UPROPERTY(EditAnywhere, Category="Attributes")
+	UPROPERTY(EditAnywhere, Category="Resources")
 	FLingLongAttribute Rage;
 	
 };

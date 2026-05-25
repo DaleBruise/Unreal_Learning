@@ -2,9 +2,10 @@
 
 
 #include "LingLongAICharacter.h"
-
 #include "SharedGameplayTags.h"
+
 #include "ActionSystem/ActionSystemLingLong.h"
+#include "ActionSystem/LingLongAttributeSet.h"
 
 // Sets default values
 ALingLongAICharacter::ALingLongAICharacter()
@@ -14,6 +15,7 @@ ALingLongAICharacter::ALingLongAICharacter()
 
 	this->ActionSystemComp = this->CreateDefaultSubobject<UActionSystemLingLong>(TEXT(
 		"ActionSystemComp"));
+	this->ActionSystemComp->SetDefaultAttributeSet(ULingLongMonsterAttributeSet::StaticClass());
 }
 
 float ALingLongAICharacter::TakeDamage(float DamageAmount,
