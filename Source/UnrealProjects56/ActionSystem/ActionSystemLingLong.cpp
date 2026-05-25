@@ -170,7 +170,8 @@ void UActionSystemLingLong::StopAction(FGameplayTag InActionName)
 {
 	for (const auto& Action : this->Actions)
 	{
-		if (Action->GetActionName() == InActionName)
+		if (Action->GetActionName() == InActionName
+			&& Action->IsRunning())
 		{
 			Action->StopAction();
 			return;
