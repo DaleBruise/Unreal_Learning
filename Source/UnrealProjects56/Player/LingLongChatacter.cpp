@@ -123,6 +123,8 @@ void ALingLongCharacter::Look(const FInputActionInstance& InValue)
 
 void ALingLongCharacter::OnHealthChanged(FGameplayTag AttributeTag, float NewHealth, float OldHealth)
 {
+	// float DamageAmount = NewHealth - OldHealth;
+	
 	/* Died ? */
 	if (FMath::IsNearlyZero(NewHealth))
 	{
@@ -130,7 +132,7 @@ void ALingLongCharacter::OnHealthChanged(FGameplayTag AttributeTag, float NewHea
 
 		this->GetMovementComponent()->StopMovementImmediately();
 
-		this->PlayAnimMontage(this->PlayerDeathMontage);
+		this->PlayAnimMontage(this->PlayerDeathMontage);		
 	}
 }
 
@@ -146,6 +148,12 @@ float ALingLongCharacter::TakeDamage(float DamageAmount,
 		ActualDamage,
 		EAttributeModifiedType::Base);
 
+	const float RageToAdd = DamageAmount * 0.75;
+	this->ActionSystemComp->ApplyAttributeChange(SharedGameplayTags::Attribute_Rage,
+		RageToAdd,
+		EAttributeModifiedType::Modifier);
+	
+	
 	return ActualDamage;
 }
 

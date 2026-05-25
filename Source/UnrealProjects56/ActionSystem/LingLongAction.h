@@ -46,6 +46,8 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category="Actions")
 	FGameplayTagContainer BlockedTags;
 	
+	UPROPERTY(EditDefaultsOnly, Category="Actions")
+	TMap<FGameplayTag, float> ActivationCost;
 	
 	UPROPERTY(Transient)
 	float CoolDownUntil = 0.0f;

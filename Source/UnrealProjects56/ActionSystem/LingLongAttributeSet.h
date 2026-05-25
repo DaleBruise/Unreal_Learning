@@ -67,6 +67,9 @@ public:
 	UPROPERTY(EditAnywhere, Category="Attributes")
 	FLingLongAttribute MoveSpeed;
 	
+	UPROPERTY(EditAnywhere, Category="Attributes")
+	FLingLongAttribute MoveSpeedMultiplier;
+	
 	ULingLongPawnAttributeSet();
 	virtual void PostAttributeChanged() override;	
 	virtual void InitializeAttributes() override;
@@ -83,6 +86,9 @@ class ULingLongPlayerAttributeSet : public ULingLongPawnAttributeSet
 	GENERATED_BODY()
 	
 public:
+	
+	UPROPERTY(EditAnywhere, Category="Attributes")
+	FLingLongAttribute Rage;
 	
 };
 

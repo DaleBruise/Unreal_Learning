@@ -36,6 +36,7 @@ void ULingLongHealthAttributeSet::PostAttributeChanged()
 ULingLongPawnAttributeSet::ULingLongPawnAttributeSet()
 {
 	this->MoveSpeed = FLingLongAttribute(550);
+	this->MoveSpeedMultiplier = FLingLongAttribute(1.0f);
 }
 
 void ULingLongPawnAttributeSet::PostAttributeChanged()
@@ -55,7 +56,9 @@ void ULingLongPawnAttributeSet::InitializeAttributes()
 void ULingLongPawnAttributeSet::ApplyMoveSpeed()
 {
 	auto OwningCharacter = Cast<ACharacter>(ULingLongAttributeSet::GetOwningComponent()->GetOwner());
-	OwningCharacter->GetCharacterMovement()->MaxWalkSpeed = this->MoveSpeed.GetValue();
+	OwningCharacter->GetCharacterMovement()->MaxWalkSpeed = 
+		this->MoveSpeed.GetValue() * this->MoveSpeedMultiplier.GetValue();
+	
 }
 
 /* class ULingLongMonsterAttributeSet */
