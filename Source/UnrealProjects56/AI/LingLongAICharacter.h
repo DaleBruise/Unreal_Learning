@@ -16,16 +16,19 @@ class UNREALPROJECTS56_API ALingLongAICharacter : public ACharacter
 public:
 	// Sets default values for this character's properties
 	ALingLongAICharacter();
-
-
-protected:
-	
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
-	TObjectPtr<UActionSystemLingLong> ActionSystemComp;
 	
 	virtual float TakeDamage(float DamageAmount,
 						 struct FDamageEvent const& DamageEvent,
 						 class AController* EventInstigator,
 						 AActor* DamageCauser) override;
+
+	virtual void PostInitializeComponents() override;
+	
+protected:
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	TObjectPtr<UActionSystemLingLong> ActionSystemComp;
+	
+	FTimerHandle OverlayTimerHandle;
 	
 };

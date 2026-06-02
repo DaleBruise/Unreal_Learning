@@ -29,6 +29,11 @@ void UInteractionComponent::Interact()
 	{
 		InteractInterface->Interact();
 	}
+
+	// if (this->SelectedActor != nullptr)
+	// {
+	// 	IInteractionInterface::Execute_Interact(this->SelectedActor);
+	// }
 }
 
 // Called every frame
@@ -65,7 +70,7 @@ void UInteractionComponent::TickComponent(float DeltaTime,
 			FVector Origin;
 			FVector BoxExtent;
 			Lap.GetActor()->GetActorBounds(true, Origin, BoxExtent);
-			
+
 			// FVector OverlapLocation = Lap.GetActor()->GetActorLocation();
 			FVector OverlapDirection = (Origin - CameraLocation).GetSafeNormal();
 
@@ -76,8 +81,8 @@ void UInteractionComponent::TickComponent(float DeltaTime,
 			float DotResult = FVector::DotProduct(OverlapDirection,
 			                                      PC->GetControlRotation().Vector());
 			float NormalDotResult = DotResult * 0.5f + 0.5f;
-			
-			float Weight = NormalDotResult * this->NormalDotScale + 
+
+			float Weight = NormalDotResult * this->NormalDotScale +
 				NormalDistanceResult * this->NormalDistanceScale;
 			if (Weight > HighestWeight)
 			{
@@ -93,9 +98,9 @@ void UInteractionComponent::TickComponent(float DeltaTime,
 				             FColor::Green);
 
 				FString DebugString = FString::Printf(
-					TEXT("Weight : %f , Distance : %f , Dot : %f"), 
+					TEXT("Weight : %f , Distance : %f , Dot : %f"),
 					Weight, NormalDistanceResult, NormalDotResult);
-				
+
 				DrawDebugString(this->GetWorld(),
 				                Origin,
 				                DebugString,

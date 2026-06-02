@@ -10,6 +10,8 @@
 ALingLongProjectileMagic::ALingLongProjectileMagic()
 {
 	this->MovementComp->InitialSpeed = 2000.0f;
+
+	this->InitialLifeSpan = 9.0f;
 }
 
 void ALingLongProjectileMagic::OnActorHit(UPrimitiveComponent* HitComponent,
@@ -23,14 +25,14 @@ void ALingLongProjectileMagic::OnActorHit(UPrimitiveComponent* HitComponent,
 	                  OtherComp,
 	                  NormalImpulse,
 	                  Hit);
-	
+
 	FVector HitFromDirection = this->GetActorRotation().Vector();
-	
+
 	UGameplayStatics::ApplyPointDamage(OtherActor,
-								   10.0f,
-								   HitFromDirection,
-								   Hit,
-								   this->GetInstigatorController(),
-								   this,
-								   this->DmgTypeClass);
+	                                   10.0f,
+	                                   HitFromDirection,
+	                                   Hit,
+	                                   this->GetInstigatorController(),
+	                                   this,
+	                                   this->DmgTypeClass);
 }

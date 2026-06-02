@@ -4,6 +4,7 @@
 #include "LingLongAction.h"
 
 #include "ActionSystemLingLong.h"
+#include "UnrealProjects56.h"
 
 void ULingLongAction::StartAction_Implementation()
 {
@@ -11,7 +12,7 @@ void ULingLongAction::StartAction_Implementation()
 
 	float GameTime = this->GetWorld()->TimeSeconds;
 
-	UE_LOGFMT(LogTemp, Log, "Start Action {ActionName} - {WorldTime}",
+	UE_LOGFMT(LogGame, Log, "Start Action {ActionName} - {WorldTime}",
 	          ("ActionName", this->ActionName.ToString()),
 	          ("WorldTime", GameTime));
 
@@ -31,7 +32,7 @@ void ULingLongAction::StopAction_Implementation()
 
 	float GameTime = this->GetWorld()->TimeSeconds;
 
-	UE_LOGFMT(LogTemp, Log, "Stopped Action {ActionName} - {WorldTime}",
+	UE_LOGFMT(LogGame, Log, "Stopped Action {ActionName} - {WorldTime}",
 	          ("ActionName", this->ActionName.ToString()),
 	          ("WorldTime", GameTime));
 
@@ -67,13 +68,13 @@ bool ULingLongAction::CanStart() const
 	}
 	
 	/* Printing the logs */
-	UE_LOG(LogTemp, Log, TEXT("Cool Down Remaining : %f "), this->GetCoolDownTimeRemaining());
+	UE_LOG(LogGame, Log, TEXT("Cool Down Remaining : %f "), this->GetCoolDownTimeRemaining());
 	for (auto Cost : this->ActivationCost)
 	{
 		float AvailableAttributeAmount = Pointer->GetAttributeValue(Cost.Key);
 		if (AvailableAttributeAmount < Cost.Value)
 		{
-			UE_LOGFMT(LogTemp, Log, "Not enough {AttributeName} to activate {ActionName}. "
+			UE_LOGFMT(LogGame, Log, "Not enough {AttributeName} to activate {ActionName}. "
 						   "Have {AvailableAttributeValue} and need {RequiredAttributeValue}",
 						   ("AttributeName", Cost.Key.ToString()),
 						   ("ActionName", this->ActionName.ToString()),

@@ -36,6 +36,8 @@ AProjectileBase::AProjectileBase()
 	this->LoopedAudioComp = this->CreateDefaultSubobject<UAudioComponent>(
 		TEXT("LoopedAudioComp"));
 	this->LoopedAudioComp->SetupAttachment(this->SphereComp);
+
+	this->InitialLifeSpan = 30.0f;
 }
 
 void AProjectileBase::OnActorHit(UPrimitiveComponent* HitComponent,
@@ -51,15 +53,14 @@ void AProjectileBase::OnActorHit(UPrimitiveComponent* HitComponent,
 
 void AProjectileBase::PlayExplodeEffect() const
 {
-
 	UNiagaraFunctionLibrary::SpawnSystemAtLocation(this,
-												   this->ExplosionEffect,
-												   this->GetActorLocation());
+	                                               this->ExplosionEffect,
+	                                               this->GetActorLocation());
 
 	UGameplayStatics::PlaySoundAtLocation(this,
-										  this->ExplosionSound,
-										  this->GetActorLocation(),
-										  FRotator::ZeroRotator);
+	                                      this->ExplosionSound,
+	                                      this->GetActorLocation(),
+	                                      FRotator::ZeroRotator);
 }
 
 void AProjectileBase::PostInitializeComponents()
@@ -67,7 +68,7 @@ void AProjectileBase::PostInitializeComponents()
 	Super::PostInitializeComponents();
 
 	this->SphereComp->OnComponentHit.AddDynamic(this,
-												&AProjectileBase::OnActorHit);
+	                                            &AProjectileBase::OnActorHit);
 
 	this->SphereComp->IgnoreActorWhenMoving(this->GetInstigator(), true);
 }

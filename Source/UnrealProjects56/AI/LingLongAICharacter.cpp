@@ -30,5 +30,30 @@ float ALingLongAICharacter::TakeDamage(float DamageAmount,
 		ActualDamage,
 		EAttributeModifiedType::Base);
 
+	this->GetMesh()->SetOverlayMaterialMaxDrawDistance(0);
+	
+	// this->GetMesh()->SetScalarParameterValueOnMaterials(
+	// 	"TimeToHit",
+	// 	this->GetWorld()->TimeSeconds);
+
+	this->GetMesh()->SetCustomPrimitiveDataFloat(
+		0,
+		this->GetWorld()->TimeSeconds);
+	
+	this->GetWorldTimerManager().SetTimer(this->OverlayTimerHandle,
+									  [this]()
+									  {
+										  this->GetMesh()->SetOverlayMaterialMaxDrawDistance(1);
+									  },
+									  1.0f,
+									  false);
+	
 	return ActualDamage;
+}
+
+void ALingLongAICharacter::PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
+	
+	this->GetMesh()->SetOverlayMaterialMaxDrawDistance(1);
 }

@@ -5,6 +5,7 @@
 
 #include "LingLongAction.h"
 #include "LingLongAttributeSet.h"
+#include "UnrealProjects56.h"
 
 
 // Sets default values for this component's properties
@@ -20,7 +21,7 @@ void UActionSystemLingLong::InitializeComponent()
 	if (this->Attributes == nullptr)
 	{
 		this->Attributes = NewObject<ULingLongAttributeSet>(this, ULingLongAttributeSet::StaticClass());
-		UE_LOG(LogTemp, Log, TEXT("No default AttributeSet defined for %s."),
+		UE_LOG(LogGame, Log, TEXT("No default AttributeSet defined for %s."),
 		       *GetNameSafe(this->GetOwner()))
 	}
 
@@ -95,13 +96,13 @@ void UActionSystemLingLong::ApplyAttributeChange(FGameplayTag AttributeTag,
 			if (!IfBound)
 			{
 				DynamicEvents->Remove(SubEvent);
-				UE_LOG(LogTemp, Log, TEXT("Cleaned up expired attribute delegate for %s"),
+				UE_LOG(LogGame, Log, TEXT("Cleaned up expired attribute delegate for %s"),
 				       *GetNameSafe(GetOwner()));
 			}
 		}
 	}
 
-	UE_LOGFMT(LogTemp, Log, "Attribute: {0}, New: {1}, Old: {2}",
+	UE_LOGFMT(LogGame, Log, "Attribute: {0}, New: {1}, Old: {2}",
 	          AttributeTag.ToString(),
 	          FoundAttribute->GetValue(),
 	          OldValue);
@@ -120,7 +121,7 @@ void UActionSystemLingLong::RemoveDynamicAttributeListener(FOnAttributeDynamicCh
 	{
 		if (Listener.Value.RemoveSingle(Event) > 0)
 		{
-			UE_LOG(LogTemp, Warning, TEXT("Successfully removed blueprint binding"))
+			UE_LOG(LogGame, Warning, TEXT("Successfully removed blueprint binding"))
 			break;
 		}
 	}
@@ -140,7 +141,7 @@ float UActionSystemLingLong::GetAttributeValue(FGameplayTag InAttributeTag) cons
 void UActionSystemLingLong::SetDefaultAttributeSet(TSubclassOf<ULingLongAttributeSet> AttributeSetClass)
 {
 	check(!this->HasBeenInitialized());
-	
+
 	FObjectInitializer& ObjectInitializer = FObjectInitializer::Get();
 	this->Attributes = Cast<ULingLongAttributeSet>(
 		ObjectInitializer.CreateDefaultSubobject(this,
@@ -163,7 +164,7 @@ void UActionSystemLingLong::StartAction(FGameplayTag InActionName)
 		}
 	}
 
-	UE_LOG(LogTemp, Log, TEXT("No Action found with name %s "), *InActionName.ToString());
+	UE_LOG(LogGame, Log, TEXT("No Action found with name %s "), *InActionName.ToString());
 }
 
 void UActionSystemLingLong::StopAction(FGameplayTag InActionName)
@@ -178,7 +179,7 @@ void UActionSystemLingLong::StopAction(FGameplayTag InActionName)
 		}
 	}
 
-	UE_LOG(LogTemp, Log, TEXT("No Action found with name %s "), *InActionName.ToString());
+	UE_LOG(LogGame, Log, TEXT("No Action found with name %s "), *InActionName.ToString());
 }
 
 void UActionSystemLingLong::GrantAction(TSubclassOf<ULingLongAction> NewActionClass)

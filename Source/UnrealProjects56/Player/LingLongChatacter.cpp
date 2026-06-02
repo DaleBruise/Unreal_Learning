@@ -89,7 +89,9 @@ void ALingLongCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 void ALingLongCharacter::PostInitializeComponents()
 {
 	Super::PostInitializeComponents();
-	
+
+	this->GetMesh()->SetOverlayMaterialMaxDrawDistance(1);
+
 	this->ActionSystemComp->GetAttributeListener(SharedGameplayTags::Attribute_Health)
 	    .AddUObject(this, &ThisClass::OnHealthChanged);
 }
@@ -125,15 +127,15 @@ void ALingLongCharacter::Look(const FInputActionInstance& InValue)
 void ALingLongCharacter::OnHealthChanged(FGameplayTag AttributeTag, float NewHealth, float OldHealth)
 {
 	// float DamageAmount = NewHealth - OldHealth;
-	
+
 	/* Died ? */
-	if (FMath::IsNearlyZero(NewHealth))
+	if (FMath::IsNearlyZero(NewHealth) && OldHealth > 0.0f)
 	{
 		this->DisableInput(nullptr);
 
 		this->GetMovementComponent()->StopMovementImmediately();
 
-		this->PlayAnimMontage(this->PlayerDeathMontage);		
+		this->PlayAnimMontage(this->PlayerDeathMontage);
 	}
 }
 
@@ -151,10 +153,27 @@ float ALingLongCharacter::TakeDamage(float DamageAmount,
 
 	const float RageToAdd = DamageAmount * 0.75;
 	this->ActionSystemComp->ApplyAttributeChange(SharedGameplayTags::Attribute_Rage,
-		RageToAdd,
-		EAttributeModifiedType::Modifier);
-	
-	
+	                                             RageToAdd,
+	                                             EAttributeModifiedType::Modifier);
+
+	this->GetMesh()->SetOverlayMaterialMaxDrawDistance(0);
+
+	// this->GetMesh()->SetScalarParameterValueOnMaterials(
+	// 	"TimeToHit",
+	// 	this->GetWorld()->TimeSeconds);
+
+	this->GetMesh()->SetCustomPrimitiveDataFloat(
+		0,
+		this->GetWorld()->TimeSeconds);
+
+	this->GetWorldTimerManager().SetTimer(this->OverlayTimerHandle,
+	                                      [this]()
+	                                      {
+		                                      this->GetMesh()->SetOverlayMaterialMaxDrawDistance(1);
+	                                      },
+	                                      1.0f,
+	                                      false);
+
 	return ActualDamage;
 }
 

@@ -67,6 +67,7 @@ protected:
 	UPROPERTY(VisibleAnywhere, Category = "PrimaryAttack")
 	float AttackAnimDelay;
 
+	FTimerHandle OverlayTimerHandle;
 
 	void Move(const FInputActionValue& InValue);
 	void Look(const FInputActionInstance& InValue);
