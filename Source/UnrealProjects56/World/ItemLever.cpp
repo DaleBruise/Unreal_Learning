@@ -49,7 +49,7 @@ void AItemLever::Tick(float DeltaTime)
 	}
 }
 
-void AItemLever::Interact()
+void AItemLever::Interact_Implementation()
 {
 	/*Animation Starts*/
 	this->SetActorTickEnabled(true);

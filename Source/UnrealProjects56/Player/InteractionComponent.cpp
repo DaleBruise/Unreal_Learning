@@ -24,16 +24,14 @@ UInteractionComponent::UInteractionComponent()
 
 void UInteractionComponent::Interact()
 {
-	auto* InteractInterface = Cast<IInteractionInterface>(this->SelectedActor);
-	if (InteractInterface != nullptr)
-	{
-		InteractInterface->Interact();
-	}
-
-	// if (this->SelectedActor != nullptr)
+	// auto* InteractInterface = Cast<IInteractionInterface>(this->SelectedActor);
+	// if (InteractInterface != nullptr)
 	// {
-	// 	IInteractionInterface::Execute_Interact(this->SelectedActor);
+	// 	InteractInterface->Interact();
 	// }
+
+	IInteractionInterface::Execute_Interact(this->SelectedActor);
+	
 }
 
 // Called every frame

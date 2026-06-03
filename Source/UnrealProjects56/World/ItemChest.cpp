@@ -61,7 +61,7 @@ void AItemChest::Tick(float DeltaTime)
 	}
 }
 
-void AItemChest::Interact()
+void AItemChest::Interact_Implementation()
 {
 	/*Animation Starts*/
 	this->SetActorTickEnabled(true);

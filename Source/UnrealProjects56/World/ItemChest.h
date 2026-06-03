@@ -45,7 +45,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	
-	virtual void Interact() override;
+	virtual void Interact_Implementation() override;
 	
 	// Sets default values for this actor's properties
 	AItemChest();

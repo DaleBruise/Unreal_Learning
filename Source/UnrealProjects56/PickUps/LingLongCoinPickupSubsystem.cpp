@@ -31,5 +31,5 @@ void ULingLongCoinPickupSubsystem::Tick(float DeltaTime)
 
 TStatId ULingLongCoinPickupSubsystem::GetStatId() const
 {
-	RETURN_QUICK_DECLARE_CYCLE_STAT(ULingLongCoinPickupSubsystem, STATGROUP_Tickables);
+	RETURN_QUICK_DECLARE_CYCLE_STAT(LingLongCoinPickupSubsystem, STATGROUP_Tickables);
 }
