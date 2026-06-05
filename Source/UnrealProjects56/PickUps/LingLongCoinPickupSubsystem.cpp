@@ -23,6 +23,7 @@ void ULingLongCoinPickupSubsystem::OnWorldBeginPlay(UWorld& InWorld)
 		                                         NAME_None,
 		                                         RF_Transient);
 	this->WorldISM->SetCollisionEnabled(ECollisionEnabled::Type::NoCollision);
+	this->WorldISM->SetAffectDistanceFieldLighting(false);
 	this->WorldISM->RegisterComponentWithWorld(World);
 
 	const auto DevSettings = GetDefault<ULingLongDeveloperSettings>();
@@ -56,11 +57,10 @@ void ULingLongCoinPickupSubsystem::OnPickupSoundLoadComplete(
 
 inline void ULingLongCoinPickupSubsystem::PlayPickupSound() const
 {
-	if (this->WorldAudioComp->IsPlaying())
+	if (!this->WorldAudioComp->IsPlaying())
 	{
-		this->WorldAudioComp->Stop();
+		this->WorldAudioComp->Play();
 	}
-	this->WorldAudioComp->Play();
 	this->WorldAudioComp->SetTriggerParameter(this->CoinPickupTriggerParameter);
 }
 
@@ -115,11 +115,10 @@ void ULingLongCoinPickupSubsystem::Tick(float DeltaTime)
 			TotalCoins += this->CoinAmounts[CoinAmountIndex];
 
 			this->RemoveCoinPickup(CoinAmountIndex);
-
-			if (TotalCoins > 0)
-			{
-				PlayPickupSound();
-			}
+		}
+		if (TotalCoins > 0)
+		{
+			PlayPickupSound();
 		}
 	}
 
@@ -155,9 +154,9 @@ void ULingLongCoinPickupSubsystem::RemoveCoinPickup(const int32& IndexCoinRemove
 {
 	TRACE_CPUPROFILER_EVENT_SCOPE(LingLongCoinPickupSubsystem::RemoveCoinPickup);
 
-	this->CoinAmounts.RemoveAt(IndexCoinRemove);
-	this->CoinLocations.RemoveAt(IndexCoinRemove);
+	this->CoinAmounts.RemoveAtSwap(IndexCoinRemove, EAllowShrinking::No);
+	this->CoinLocations.RemoveAtSwap(IndexCoinRemove, EAllowShrinking::No);
 
 	this->WorldISM->RemoveInstanceById(this->MeshIDs[IndexCoinRemove]);
-	this->MeshIDs.RemoveAt(IndexCoinRemove);
+	this->MeshIDs.RemoveAtSwap(IndexCoinRemove, EAllowShrinking::No);
 }
