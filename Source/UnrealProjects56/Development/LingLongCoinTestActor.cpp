@@ -30,7 +30,7 @@ void ALingLongCoinTestActor::SpawnCoins(int32 SpawnCount)
 			NavLocation);
 		
 		CoinLocations.Add(NavLocation.Location);
-		CoinAmounts.Add(5);
+		CoinAmounts.Add(10);
 	}
 
 	auto* CoinSystem =

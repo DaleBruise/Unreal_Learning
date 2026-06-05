@@ -6,9 +6,9 @@
 #include "Subsystems/WorldSubsystem.h"
 #include "LingLongCoinPickupSubsystem.generated.h"
 
-/**
- * 
- */
+class UInstancedStaticMeshComponent;
+struct FPrimitiveInstanceId;
+
 UCLASS()
 class UNREALPROJECTS56_API ULingLongCoinPickupSubsystem : public UTickableWorldSubsystem
 {
@@ -16,13 +16,18 @@ class UNREALPROJECTS56_API ULingLongCoinPickupSubsystem : public UTickableWorldS
 
 protected:
 	
+	UPROPERTY()
+	TObjectPtr<UInstancedStaticMeshComponent> WorldISM;
+	
 	TArray<FVector> CoinLocations;
 	TArray<int32> CoinAmounts;
+	TArray<FPrimitiveInstanceId> MeshIDs;
 	
 public:
 	
 	void AddCoinPickups(TArray<FVector> NewLocations, TArray<int32> NewAmounts);
+	void RemoveCoinPickup(const int32& IndexCoinRemove);
 	virtual void Tick(float DeltaTime) override;
 	virtual TStatId GetStatId() const override;
-	void RemoveCoinPickup(const int32& IndexCoinRemove);
+	virtual void OnWorldBeginPlay(UWorld& InWorld) override;
 };
