@@ -13,23 +13,6 @@
 
 #include "Player/LingLongChatacter.h"
 
-void ULingLongCoinPickupSubsystem::AddCoinPickups(TArray<FVector> NewLocations, TArray<int32> NewAmounts)
-{
-	this->CoinLocations.Append(NewLocations);
-	this->CoinAmounts.Append(NewAmounts);
-
-	TArray<FTransform> MeshTransforms;
-	for (const auto& Location : NewLocations)
-	{
-		MeshTransforms.Add(FTransform(Location
-			+ FVector(0, 0, 50.0f)));
-	}
-
-	auto NewMeshIDs =
-		this->WorldISM->AddInstancesById(MeshTransforms, true, false);
-	this->MeshIDs.Append(NewMeshIDs);
-}
-
 void ULingLongCoinPickupSubsystem::OnWorldBeginPlay(UWorld& InWorld)
 {
 	Super::OnWorldBeginPlay(InWorld);
@@ -53,6 +36,7 @@ void ULingLongCoinPickupSubsystem::OnWorldBeginPlay(UWorld& InWorld)
 
 	this->WorldAudioComp = NewObject<UAudioComponent>(World, NAME_None, RF_Transient);
 	this->WorldAudioComp->SetAutoActivate(false);
+	this->WorldAudioComp->bAllowSpatialization = false;
 	this->WorldAudioComp->RegisterComponentWithWorld(World);
 }
 
@@ -82,6 +66,8 @@ inline void ULingLongCoinPickupSubsystem::PlayPickupSound() const
 
 void ULingLongCoinPickupSubsystem::Tick(float DeltaTime)
 {
+	TRACE_CPUPROFILER_EVENT_SCOPE(LingLongCoinPickupSubsystem::Tick);
+
 	Super::Tick(DeltaTime);
 	bool DebugFlag = CVarInteractionDebugDrawing.GetValueOnGameThread();
 
@@ -106,26 +92,34 @@ void ULingLongCoinPickupSubsystem::Tick(float DeltaTime)
 	}
 
 	TArray<int32> ProcessList;
-	for (int i = 0; i < this->CoinLocations.Num(); ++i)
 	{
-		float Dist = FVector::Dist(PLayerLocation, this->CoinLocations[i]);
-		if (Dist < 200.0f)
+		TRACE_CPUPROFILER_EVENT_SCOPE(LingLongCoinPickupSubsystem::Tick::CoinDistanceCalc);
+
+		for (int i = 0; i < this->CoinLocations.Num(); ++i)
 		{
-			ProcessList.Add(i);
+			float Dist = FVector::Dist(PLayerLocation, this->CoinLocations[i]);
+			if (Dist < 200.0f)
+			{
+				ProcessList.Add(i);
+			}
 		}
 	}
 
 	int32 TotalCoins = 0;
-	for (int i = ProcessList.Num() - 1; i >= 0; --i)
 	{
-		int32 CoinAmountIndex = ProcessList[i];
-		TotalCoins += this->CoinAmounts[CoinAmountIndex];
+		TRACE_CPUPROFILER_EVENT_SCOPE(LingLongCoinPickupSubsystem::Tick::HandlePickups);
 
-		this->RemoveCoinPickup(CoinAmountIndex);
-
-		if (TotalCoins > 0)
+		for (int i = ProcessList.Num() - 1; i >= 0; --i)
 		{
-			PlayPickupSound();
+			int32 CoinAmountIndex = ProcessList[i];
+			TotalCoins += this->CoinAmounts[CoinAmountIndex];
+
+			this->RemoveCoinPickup(CoinAmountIndex);
+
+			if (TotalCoins > 0)
+			{
+				PlayPickupSound();
+			}
 		}
 	}
 
@@ -138,8 +132,29 @@ TStatId ULingLongCoinPickupSubsystem::GetStatId() const
 	RETURN_QUICK_DECLARE_CYCLE_STAT(LingLongCoinPickupSubsystem, STATGROUP_Tickables);
 }
 
+void ULingLongCoinPickupSubsystem::AddCoinPickups(TArray<FVector> NewLocations, TArray<int32> NewAmounts)
+{
+	TRACE_CPUPROFILER_EVENT_SCOPE(LingLongCoinPickupSubsystem::AddCoinPickups);
+
+	this->CoinLocations.Append(NewLocations);
+	this->CoinAmounts.Append(NewAmounts);
+
+	TArray<FTransform> MeshTransforms;
+	for (const auto& Location : NewLocations)
+	{
+		MeshTransforms.Add(FTransform(Location
+			+ FVector(0, 0, 50.0f)));
+	}
+
+	auto NewMeshIDs =
+		this->WorldISM->AddInstancesById(MeshTransforms, true, false);
+	this->MeshIDs.Append(NewMeshIDs);
+}
+
 void ULingLongCoinPickupSubsystem::RemoveCoinPickup(const int32& IndexCoinRemove)
 {
+	TRACE_CPUPROFILER_EVENT_SCOPE(LingLongCoinPickupSubsystem::RemoveCoinPickup);
+
 	this->CoinAmounts.RemoveAt(IndexCoinRemove);
 	this->CoinLocations.RemoveAt(IndexCoinRemove);
 
