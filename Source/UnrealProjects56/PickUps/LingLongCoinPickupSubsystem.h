@@ -7,6 +7,9 @@
 #include "LingLongCoinPickupSubsystem.generated.h"
 
 class UInstancedStaticMeshComponent;
+class UAudioComponent;
+class ULingLongDeveloperSettings;
+
 struct FPrimitiveInstanceId;
 
 UCLASS()
@@ -19,12 +22,17 @@ protected:
 	UPROPERTY()
 	TObjectPtr<UInstancedStaticMeshComponent> WorldISM;
 	
-	void OnPickupMeshLoadComplete(const FSoftObjectPath& SoftObjectPath, 
-		UObject* LoadedObject);
+	UPROPERTY()
+	TObjectPtr<UAudioComponent> WorldAudioComp;
 	
 	TArray<FVector> CoinLocations;
 	TArray<int32> CoinAmounts;
 	TArray<FPrimitiveInstanceId> MeshIDs;
+	FName CoinPickupTriggerParameter; /*Cached from dev settings*/
+	
+	void OnPickupMeshLoadComplete(const FSoftObjectPath& SoftObjectPath, UObject* LoadedObject) const;
+	void OnPickupSoundLoadComplete(const FSoftObjectPath& SoftObjectPath, UObject* LoadedObject) const;
+	inline void PlayPickupSound() const;
 	
 public:
 	

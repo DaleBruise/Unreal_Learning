@@ -2,12 +2,15 @@
 
 
 #include "LingLongCoinPickupSubsystem.h"
-
 #include "EngineUtils.h"
 #include "LingLongTypes.h"
 #include "UnrealProjects56.h"
+
+#include "Components/AudioComponent.h"
 #include "Components/InstancedStaticMeshComponent.h"
+
 #include "Core/LingLongDeveloperSettings.h"
+
 #include "Player/LingLongChatacter.h"
 
 void ULingLongCoinPickupSubsystem::AddCoinPickups(TArray<FVector> NewLocations, TArray<int32> NewAmounts)
@@ -30,7 +33,7 @@ void ULingLongCoinPickupSubsystem::AddCoinPickups(TArray<FVector> NewLocations, 
 void ULingLongCoinPickupSubsystem::OnWorldBeginPlay(UWorld& InWorld)
 {
 	Super::OnWorldBeginPlay(InWorld);
-	
+
 	UWorld* World = this->GetWorld();
 	this->WorldISM =
 		NewObject<UInstancedStaticMeshComponent>(World,
@@ -39,17 +42,42 @@ void ULingLongCoinPickupSubsystem::OnWorldBeginPlay(UWorld& InWorld)
 	this->WorldISM->SetCollisionEnabled(ECollisionEnabled::Type::NoCollision);
 	this->WorldISM->RegisterComponentWithWorld(World);
 
+	const auto DevSettings = GetDefault<ULingLongDeveloperSettings>();
+
 	FLoadSoftObjectPathAsyncDelegate Delegate;
 	Delegate.BindUObject(this, &ThisClass::OnPickupMeshLoadComplete);
-	int32 ID = GetDefault<ULingLongDeveloperSettings>()
-		->CoinPickupMesh.LoadAsync(Delegate);
+	int32 ID = DevSettings->CoinPickupMesh.LoadAsync(Delegate);
+	DevSettings->CoinPickupSound.LoadAsync(
+		FLoadSoftObjectPathAsyncDelegate::CreateUObject(this, &ThisClass::OnPickupSoundLoadComplete));
+	this->CoinPickupTriggerParameter = DevSettings->CoinPickupTriggerParameter;
+
+	this->WorldAudioComp = NewObject<UAudioComponent>(World, NAME_None, RF_Transient);
+	this->WorldAudioComp->SetAutoActivate(false);
+	this->WorldAudioComp->RegisterComponentWithWorld(World);
 }
 
 void ULingLongCoinPickupSubsystem::OnPickupMeshLoadComplete(
-	const FSoftObjectPath& SoftObjectPath, 
-	UObject* LoadedObject)
+	const FSoftObjectPath& SoftObjectPath,
+	UObject* LoadedObject) const
 {
 	this->WorldISM->SetStaticMesh(Cast<UStaticMesh>(LoadedObject));
+}
+
+void ULingLongCoinPickupSubsystem::OnPickupSoundLoadComplete(
+	const FSoftObjectPath& SoftObjectPath,
+	UObject* LoadedObject) const
+{
+	this->WorldAudioComp->SetSound(Cast<USoundBase>(LoadedObject));
+}
+
+inline void ULingLongCoinPickupSubsystem::PlayPickupSound() const
+{
+	if (this->WorldAudioComp->IsPlaying())
+	{
+		this->WorldAudioComp->Stop();
+	}
+	this->WorldAudioComp->Play();
+	this->WorldAudioComp->SetTriggerParameter(this->CoinPickupTriggerParameter);
 }
 
 void ULingLongCoinPickupSubsystem::Tick(float DeltaTime)
@@ -77,7 +105,6 @@ void ULingLongCoinPickupSubsystem::Tick(float DeltaTime)
 		PLayerLocation = PlayerCharacter->GetActorLocation();
 	}
 
-	// constexpr float PickupRadius = 200.0f;
 	TArray<int32> ProcessList;
 	for (int i = 0; i < this->CoinLocations.Num(); ++i)
 	{
@@ -95,6 +122,11 @@ void ULingLongCoinPickupSubsystem::Tick(float DeltaTime)
 		TotalCoins += this->CoinAmounts[CoinAmountIndex];
 
 		this->RemoveCoinPickup(CoinAmountIndex);
+
+		if (TotalCoins > 0)
+		{
+			PlayPickupSound();
+		}
 	}
 
 	if (DebugFlag)
