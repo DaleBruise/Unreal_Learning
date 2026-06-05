@@ -19,6 +19,9 @@ protected:
 	UPROPERTY()
 	TObjectPtr<UInstancedStaticMeshComponent> WorldISM;
 	
+	void OnPickupMeshLoadComplete(const FSoftObjectPath& SoftObjectPath, 
+		UObject* LoadedObject);
+	
 	TArray<FVector> CoinLocations;
 	TArray<int32> CoinAmounts;
 	TArray<FPrimitiveInstanceId> MeshIDs;

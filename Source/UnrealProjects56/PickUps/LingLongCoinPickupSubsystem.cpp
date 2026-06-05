@@ -7,6 +7,7 @@
 #include "LingLongTypes.h"
 #include "UnrealProjects56.h"
 #include "Components/InstancedStaticMeshComponent.h"
+#include "Core/LingLongDeveloperSettings.h"
 #include "Player/LingLongChatacter.h"
 
 void ULingLongCoinPickupSubsystem::AddCoinPickups(TArray<FVector> NewLocations, TArray<int32> NewAmounts)
@@ -29,20 +30,26 @@ void ULingLongCoinPickupSubsystem::AddCoinPickups(TArray<FVector> NewLocations, 
 void ULingLongCoinPickupSubsystem::OnWorldBeginPlay(UWorld& InWorld)
 {
 	Super::OnWorldBeginPlay(InWorld);
-
-	/*TODO: optimize it*/
-	FSoftObjectPath MeshAssetPath(TEXT("/Game/ExampleContent/Meshes/SM_Pickup_Coin.SM_Pickup_Coin"));
-	UStaticMesh* LoadedMesh = Cast<UStaticMesh>(MeshAssetPath.TryLoad());
-
+	
 	UWorld* World = this->GetWorld();
-
 	this->WorldISM =
 		NewObject<UInstancedStaticMeshComponent>(World,
 		                                         NAME_None,
 		                                         RF_Transient);
 	this->WorldISM->SetCollisionEnabled(ECollisionEnabled::Type::NoCollision);
-	this->WorldISM->SetStaticMesh(LoadedMesh);
 	this->WorldISM->RegisterComponentWithWorld(World);
+
+	FLoadSoftObjectPathAsyncDelegate Delegate;
+	Delegate.BindUObject(this, &ThisClass::OnPickupMeshLoadComplete);
+	int32 ID = GetDefault<ULingLongDeveloperSettings>()
+		->CoinPickupMesh.LoadAsync(Delegate);
+}
+
+void ULingLongCoinPickupSubsystem::OnPickupMeshLoadComplete(
+	const FSoftObjectPath& SoftObjectPath, 
+	UObject* LoadedObject)
+{
+	this->WorldISM->SetStaticMesh(Cast<UStaticMesh>(LoadedObject));
 }
 
 void ULingLongCoinPickupSubsystem::Tick(float DeltaTime)
